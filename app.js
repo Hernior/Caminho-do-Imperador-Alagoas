@@ -4,6 +4,7 @@
   const cities = [
     {
       name: "Piaçabuçu",
+      visitStatus: "Desembarque registrado",
       lat: -10.407753,
       lng: -36.435382,
       elevation: 0,
@@ -16,6 +17,7 @@
     },
     {
       name: "Penedo",
+      visitStatus: "Visita registrada",
       lat: -10.290822,
       lng: -36.586380,
       elevation: 7,
@@ -28,6 +30,7 @@
     },
     {
       name: "Porto Real do Colégio",
+      visitStatus: "Visita registrada",
       lat: -10.188428,
       lng: -36.839223,
       elevation: 6,
@@ -40,6 +43,7 @@
     },
     {
       name: "São Brás",
+      visitStatus: "Observado do rio",
       lat: -10.1141,
       lng: -36.8522,
       elevation: null,
@@ -52,6 +56,7 @@
     },
     {
       name: "Traipu",
+      visitStatus: "Visita registrada",
       lat: -9.971902,
       lng: -37.001545,
       elevation: 8,
@@ -64,6 +69,7 @@
     },
     {
       name: "Belo Monte",
+      visitStatus: "Visita à região atual",
       lat: -9.8227,
       lng: -37.2770,
       elevation: null,
@@ -79,6 +85,7 @@
     },
     {
       name: "Pão de Açúcar",
+      visitStatus: "Visita registrada",
       lat: -9.750112,
       lng: -37.435620,
       elevation: 11,
@@ -94,6 +101,7 @@
     },
     {
       name: "Piranhas",
+      visitStatus: "Desembarque registrado",
       lat: -9.6240,
       lng: -37.7570,
       elevation: null,
@@ -106,6 +114,7 @@
     },
     {
       name: "Olho d’Água do Casado",
+      visitStatus: "Relação local incerta",
       lat: -9.5036,
       lng: -37.8301,
       elevation: null,
@@ -124,6 +133,7 @@
     },
     {
       name: "Delmiro Gouveia",
+      visitStatus: "Referência à região atual",
       lat: -9.3841,
       lng: -37.9978,
       elevation: null,
@@ -142,6 +152,7 @@
     },
     {
       name: "Água Branca",
+      visitStatus: "Mencionada, sem visita à sede",
       lat: -9.2620,
       lng: -37.9380,
       elevation: null,
@@ -226,6 +237,7 @@
     cityName: document.getElementById("cityName"),
     cityDescription: document.getElementById("cityDescription"),
     cityHistory: document.getElementById("cityHistory"),
+    cityVisitStatus: document.getElementById("cityVisitStatus"),
     cityHistorySources: document.getElementById("cityHistorySources"),
     cityRegion: document.getElementById("cityRegion"),
     cityRegionSources: document.getElementById("cityRegionSources"),
@@ -263,6 +275,7 @@
     mobileSheetCity: document.getElementById("mobileSheetCity"),
     mobileSheetDescription: document.getElementById("mobileSheetDescription"),
     mobileSheetHistory: document.getElementById("mobileSheetHistory"),
+    mobileSheetVisitStatus: document.getElementById("mobileSheetVisitStatus"),
     mobileSheetHistorySources: document.getElementById("mobileSheetHistorySources"),
     mobileSheetRegion: document.getElementById("mobileSheetRegion"),
     mobileSheetRegionSources: document.getElementById("mobileSheetRegionSources"),
@@ -541,6 +554,7 @@
     if (el.cityName) el.cityName.textContent = city.name;
     if (el.cityDescription) el.cityDescription.textContent = city.description;
     if (el.cityHistory) el.cityHistory.textContent = city.history;
+    if (el.cityVisitStatus) el.cityVisitStatus.textContent = city.visitStatus;
     showSourceLinks(el.cityHistorySources, city.historySources);
     if (el.cityRegion) el.cityRegion.textContent = city.region;
     showSourceLinks(el.cityRegionSources, city.regionSources);
@@ -564,6 +578,7 @@
     if (el.mobileSheetCity) el.mobileSheetCity.textContent = city.name;
     if (el.mobileSheetDescription) el.mobileSheetDescription.textContent = city.description;
     if (el.mobileSheetHistory) el.mobileSheetHistory.textContent = city.history;
+    if (el.mobileSheetVisitStatus) el.mobileSheetVisitStatus.textContent = city.visitStatus;
     showSourceLinks(el.mobileSheetHistorySources, city.historySources);
     if (el.mobileSheetRegion) el.mobileSheetRegion.textContent = city.region;
     showSourceLinks(el.mobileSheetRegionSources, city.regionSources);

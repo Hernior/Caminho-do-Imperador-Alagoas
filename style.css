@@ -296,6 +296,18 @@ h1 {
   line-height: 1.55;
 }
 
+.city-history .visit-status {
+  width: fit-content;
+  margin: 0 0 10px;
+  padding: 5px 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: .75rem;
+}
+
+.visit-status strong { color: var(--accent-strong); }
+
 .city-history-sources {
   display: flex;
   flex-wrap: wrap;
