@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151914">
+  <meta name="description" content="Mapa interativo da Trilha do Imperador em Alagoas, de Piaçabuçu a Água Branca.">
+  <title>Trilha do Imperador — Alagoas</title>
+
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://tile.openstreetmap.org">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIINfQ3ynTDNHDJ9RhCBFQ8A6zJOjK0s0+w="
+    crossorigin=""
+  >
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">ALAGOAS • CAMINHO HISTÓRICO</p>
+        <h1>Trilha do Imperador</h1>
+        <p class="hero-copy">
+          Explore o percurso de <strong>Piaçabuçu</strong> a <strong>Água Branca</strong>,
+          acompanhando cidade a cidade a rota histórica pelo Baixo São Francisco e Sertão alagoano.
+        </p>
+      </div>
+
+      <div class="hero-stats" aria-label="Resumo da rota">
+        <div><strong>11</strong><span>cidades</span></div>
+        <div><strong>~350 km</strong><span>track de referência</span></div>
+        <div><strong>1 sentido</strong><span>litoral → sertão</span></div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="map-panel" aria-label="Mapa da Trilha do Imperador">
+        <div id="map"></div>
+
+        <div class="map-actions">
+          <button id="fitRoute" class="button button-secondary" type="button">Ver rota completa</button>
+          <button id="playRoute" class="button button-primary" type="button">▶ Percorrer rota</button>
+        </div>
+
+        <div class="legend">
+          <span><i class="legend-dot"></i> Cidade da rota</span>
+          <span><i class="legend-line"></i> Ligação esquemática</span>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <section class="active-card" aria-live="polite">
+          <p class="step-label">ETAPA <span id="stageNumber">01</span></p>
+          <h2 id="cityName">Piaçabuçu</h2>
+          <p id="cityDescription"></p>
+
+          <div class="coordinate-row">
+            <span id="coordinates"></span>
+            <a id="osmLink" target="_blank" rel="noopener noreferrer">Abrir no OpenStreetMap ↗</a>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <h3>Cidade a cidade</h3>
+            <span id="progressText">1 de 11</span>
+          </div>
+
+          <ol id="cityList" class="city-list"></ol>
+        </section>
+
+        <section class="note">
+          <strong>Sobre o traçado</strong>
+          <p>
+            Os pontos com indicação “placa verificada” usam coordenadas lidas diretamente nos registros fotográficos fornecidos. Os demais ainda usam a sede municipal como referência.
+            Ela não substitui um arquivo GPX, navegação viária ou o track histórico detalhado.
+          </p>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      <p>
+        Trilha do Imperador • Alagoas. Mapa base © OpenStreetMap contributors.
+      </p>
+    </footer>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin="">
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
