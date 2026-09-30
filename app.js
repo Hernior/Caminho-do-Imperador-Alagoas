@@ -154,6 +154,73 @@
     }
   ];
 
+  const hospitality = [
+    {
+      stays: [{ name: "Viana Praia Hotel", place: "Pontal do Peba, Piaçabuçu", url: "https://www.booking.com/hotel/br/viana-praia-piacabucu12345.pt-br.html" }],
+      food: [{ name: "Restaurante Viana", place: "Pontal do Peba, Piaçabuçu", url: "https://www.booking.com/hotel/br/viana-praia-piacabucu12345.pt-br.html" }]
+    },
+    {
+      stays: [
+        { name: "Hotel São Francisco", place: "Penedo", url: "https://www.booking.com/hotel/br/sao-francisco-penedo.pt-pt.html" },
+        { name: "Hotel Rochedo", place: "Penedo", url: "https://www.booking.com/hotel/br/rochedo.pt-br.html" }
+      ],
+      food: [
+        { name: "Restaurante Oratório", place: "Penedo", url: "https://penedo.al.gov.br/2023/01/08/comidas-que-unem-bom-sabor-e-apreciacao-das-belezas-de-penedo/" },
+        { name: "Restaurante Forte da Rocheira", place: "Penedo", url: "https://penedo.al.gov.br/2023/01/08/comidas-que-unem-bom-sabor-e-apreciacao-das-belezas-de-penedo/" }
+      ]
+    },
+    {
+      stays: [{ name: "Pousada do Gil", place: "Porto Real do Colégio", url: "https://www.sluurpy.com.br/porto-real-do-col%C3%A9gio/restaurante/1622566/pousada-e-restaurante-do-gil" }],
+      food: [{ name: "Restaurante do Gil", place: "Porto Real do Colégio", url: "https://www.tripadvisor.es/Restaurants-g5257069-Porto_Real_do_Colegio_State_of_Alagoas.html" }]
+    },
+    {
+      stays: [{ name: "Pousada e Restaurante Manah", place: "Propriá, SE (cidade próxima)", url: "https://www.booking.com/hotel/br/pousada-e-restaurante-manah.pt-pt.html" }],
+      food: [{ name: "Restaurante Manah", place: "Propriá, SE (cidade próxima)", url: "https://www.booking.com/hotel/br/pousada-e-restaurante-manah.pt-pt.html" }]
+    },
+    {
+      stays: [{ name: "Chácara Flor do Sertão", place: "Traipu", url: "https://restaurantguru.com.br/Chacara-Flor-do-Sertao-Pousada-e-Restaurante-Brazil" }],
+      food: [{ name: "Restaurante Flor do Sertão", place: "Traipu", url: "https://restaurantguru.com.br/Chacara-Flor-do-Sertao-Pousada-e-Restaurante-Brazil" }]
+    },
+    {
+      stays: [{ name: "Pousada Prazeres do Velho Chico", place: "Barra do Ipanema, Belo Monte", url: "https://www.booking.com/hotel/br/pousada-prazeres-do-velho-chico.pt-br.html" }],
+      food: [{ name: "Oxente Preciosa", place: "Belo Monte", url: "https://www.tripadvisor.com.pe/Restaurant_Review-g5257075-d26542009-Reviews-Oxente_Preciosa-Belo_Monte_State_of_Alagoas.html" }]
+    },
+    {
+      stays: [{ name: "Casa Cacto Pousada", place: "Ilha do Ferro, Pão de Açúcar", url: "https://www.booking.com/hotel/br/casa-cacto.pt-br.html" }],
+      food: [{ name: "Churrascaria e Peixaria do Pinto", place: "Pão de Açúcar", url: "https://www.tripadvisor.com.br/Restaurants-g2351320-Pao_De_Acucar_State_of_Alagoas.html" }]
+    },
+    {
+      stays: [
+        { name: "Pousada Porto de Piranhas", place: "Piranhas", url: "https://turismo.piranhas.al.gov.br/hospedagens" },
+        { name: "Pousada Trilha do Velho Chico", place: "Piranhas", url: "https://turismo.piranhas.al.gov.br/hospedagens" },
+        { name: "Hotel Pedra do Sino", place: "Piranhas", url: "https://turismo.piranhas.al.gov.br/hospedagens" }
+      ],
+      food: [
+        { name: "Restaurante Canoa de Tolda", place: "Piranhas", url: "https://turismo.piranhas.al.gov.br/culinaria" },
+        { name: "Nalva Cozinha Autoral", place: "Piranhas", url: "https://turismo.piranhas.al.gov.br/culinaria" },
+        { name: "Restaurante Lampião", place: "Piranhas", url: "https://turismo.piranhas.al.gov.br/culinaria" }
+      ]
+    },
+    {
+      stays: [
+        { name: "Cânions Hotel", place: "Olho d’Água do Casado", url: "https://canionshotel.com.br/" },
+        { name: "Hotel Virgulino", place: "Olho d’Água do Casado", url: "https://visitealagoas.com.br/hospedagens/hotel-virgulino" }
+      ],
+      food: [{ name: "Restaurante do Hotel Virgulino", place: "Olho d’Água do Casado", url: "https://visitealagoas.com.br/hospedagens/hotel-virgulino" }]
+    },
+    {
+      stays: [{ name: "Bristol Aline Alagoas", place: "Delmiro Gouveia", url: "https://www.booking.com/hotel/br/aline-delmiro-gouveia.pt-br.html" }],
+      food: [
+        { name: "Marfim Restaurante", place: "Delmiro Gouveia", url: "https://visitedelmirogouveia.com.br/" },
+        { name: "Restaurante do Bristol Aline", place: "Delmiro Gouveia", url: "https://www.booking.com/hotel/br/aline-delmiro-gouveia.pt-br.html" }
+      ]
+    },
+    {
+      stays: [{ name: "Caza Fortes", place: "Água Branca", url: "https://www.booking.com/hotel/br/caza-fortes-cabana-da-baronesa.tl.html" }],
+      food: [{ name: "Restaurante Engenho São Lourenço", place: "Água Branca", url: "https://engenhosaolourenco.com.br/o-restaurante/" }]
+    }
+  ];
+
   const el = {
     cityList: document.getElementById("cityList"),
     cityName: document.getElementById("cityName"),
@@ -162,6 +229,8 @@
     cityHistorySources: document.getElementById("cityHistorySources"),
     cityRegion: document.getElementById("cityRegion"),
     cityRegionSources: document.getElementById("cityRegionSources"),
+    cityStays: document.getElementById("cityStays"),
+    cityFood: document.getElementById("cityFood"),
     cityNavigation: document.getElementById("cityNavigation"),
     cityNavigationTarget: document.getElementById("cityNavigationTarget"),
     cityGoogleLink: document.getElementById("cityGoogleLink"),
@@ -197,6 +266,8 @@
     mobileSheetHistorySources: document.getElementById("mobileSheetHistorySources"),
     mobileSheetRegion: document.getElementById("mobileSheetRegion"),
     mobileSheetRegionSources: document.getElementById("mobileSheetRegionSources"),
+    mobileSheetStays: document.getElementById("mobileSheetStays"),
+    mobileSheetFood: document.getElementById("mobileSheetFood"),
     mobileSheetNavigation: document.getElementById("mobileSheetNavigation"),
     mobileSheetNavigationTarget: document.getElementById("mobileSheetNavigationTarget"),
     mobileSheetGoogleLink: document.getElementById("mobileSheetGoogleLink"),
@@ -409,6 +480,25 @@
     });
   }
 
+  function showHospitality(container, items) {
+    if (!container) return;
+    container.replaceChildren();
+    items.forEach((item) => {
+      const row = document.createElement("li");
+      const name = document.createElement("strong");
+      name.textContent = item.name;
+      const place = document.createElement("span");
+      place.textContent = item.place;
+      const source = document.createElement("a");
+      source.href = item.url;
+      source.target = "_blank";
+      source.rel = "noopener noreferrer";
+      source.textContent = "Fonte ↗";
+      row.append(name, place, source);
+      container.appendChild(row);
+    });
+  }
+
   function showNextNavigation(container, target, googleLink, wazeLink, nextCity) {
     if (!container) return;
     container.hidden = !nextCity;
@@ -454,6 +544,8 @@
     showSourceLinks(el.cityHistorySources, city.historySources);
     if (el.cityRegion) el.cityRegion.textContent = city.region;
     showSourceLinks(el.cityRegionSources, city.regionSources);
+    showHospitality(el.cityStays, hospitality[activeIndex].stays);
+    showHospitality(el.cityFood, hospitality[activeIndex].food);
     showNextNavigation(el.cityNavigation, el.cityNavigationTarget, el.cityGoogleLink, el.cityWazeLink, cities[activeIndex + 1]);
     if (el.coordinates) {
       const elevation = city.elevation !== null ? ` • ${city.elevation} m` : "";
@@ -475,6 +567,8 @@
     showSourceLinks(el.mobileSheetHistorySources, city.historySources);
     if (el.mobileSheetRegion) el.mobileSheetRegion.textContent = city.region;
     showSourceLinks(el.mobileSheetRegionSources, city.regionSources);
+    showHospitality(el.mobileSheetStays, hospitality[activeIndex].stays);
+    showHospitality(el.mobileSheetFood, hospitality[activeIndex].food);
     showNextNavigation(el.mobileSheetNavigation, el.mobileSheetNavigationTarget, el.mobileSheetGoogleLink, el.mobileSheetWazeLink, cities[activeIndex + 1]);
     if (el.mobileSheetCoordinates) {
       el.mobileSheetCoordinates.textContent = `${city.lat.toFixed(6)}, ${city.lng.toFixed(6)}`;
