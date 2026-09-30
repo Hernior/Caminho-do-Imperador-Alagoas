@@ -354,10 +354,8 @@
       stopPlaying();
       selectCity(index, false);
 
-      if (isMobile()) {
-        marker.closePopup();
-        setMobileSheet(true);
-      }
+      marker.closePopup();
+      setMobileSheet(true);
     });
 
     markers.push(marker);
@@ -384,10 +382,8 @@
         stopPlaying();
         selectCity(index, true);
 
-        if (isMobile()) {
-          setMobileMenu(false);
-          window.setTimeout(() => setMobileSheet(true), 250);
-        }
+        setMobileMenu(false);
+        window.setTimeout(() => setMobileSheet(true), 250);
       });
 
       item.appendChild(button);
@@ -458,11 +454,6 @@
   });
 
   window.addEventListener("resize", () => {
-    if (!isMobile()) {
-      setMobileMenu(false);
-      setMobileSheet(false);
-    }
-
     window.setTimeout(() => map.invalidateSize(), 100);
   });
 

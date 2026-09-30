@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="mobile-topbar" aria-label="Navegação móvel">
+  <div class="mobile-topbar" aria-label="Navegação da rota">
       <button id="mobileMenuToggle" class="mobile-icon-button" type="button" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -31,23 +31,6 @@
     <div id="mobileBackdrop" class="mobile-backdrop" hidden></div>
 
     <div class="app-shell">
-    <header class="hero">
-      <div>
-        <p class="eyebrow">ALAGOAS • CAMINHO HISTÓRICO</p>
-        <h1>Trilha do Imperador</h1>
-        <p class="hero-copy">
-          Explore o percurso de <strong>Piaçabuçu</strong> a <strong>Água Branca</strong>,
-          acompanhando cidade a cidade a rota histórica pelo Baixo São Francisco e Sertão alagoano.
-        </p>
-      </div>
-
-      <div class="hero-stats" aria-label="Resumo da rota">
-        <div><strong>11</strong><span>cidades</span></div>
-        <div><strong>~350 km</strong><span>track de referência</span></div>
-        <div><strong>1 sentido</strong><span>litoral → sertão</span></div>
-      </div>
-    </header>
-
     <main class="layout">
       <section class="map-panel" aria-label="Mapa da Trilha do Imperador">
         <div id="map"></div>
@@ -103,6 +86,15 @@
           <strong>Rota</strong>
           <button id="mobileMenuClose" class="mobile-close-button" type="button" aria-label="Fechar menu">×</button>
         </div>
+        <section class="route-overview">
+          <p class="eyebrow">ALAGOAS • CAMINHO HISTÓRICO</p>
+          <p>Explore o percurso de <strong>Piaçabuçu</strong> a <strong>Água Branca</strong>, cidade a cidade, pelo Baixo São Francisco e Sertão alagoano.</p>
+          <div class="route-stats" aria-label="Resumo da rota">
+            <div><strong>11</strong><span>cidades</span></div>
+            <div><strong>~350 km</strong><span>track de referência</span></div>
+            <div><strong>1 sentido</strong><span>litoral → sertão</span></div>
+          </div>
+        </section>
         <section class="active-card" aria-live="polite">
           <p class="step-label">ETAPA <span id="stageNumber">01</span></p>
           <h2 id="cityName">Piaçabuçu</h2>

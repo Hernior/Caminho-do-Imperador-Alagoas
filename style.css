@@ -198,6 +198,36 @@ h1 {
   gap: 18px;
 }
 
+.route-overview {
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: .84rem;
+  line-height: 1.5;
+}
+
+.route-overview .eyebrow { margin-bottom: 6px; }
+.route-overview p { margin: 0 0 14px; }
+.route-overview p strong { color: var(--text); }
+
+.route-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.route-stats div {
+  min-width: 0;
+  padding: 10px;
+  border-left: 1px solid var(--border);
+}
+
+.route-stats div:first-child { border-left: 0; }
+.route-stats strong, .route-stats span { display: block; }
+.route-stats strong { color: var(--text); font-size: .95rem; }
+.route-stats span { font-size: .65rem; line-height: 1.25; }
+
 .active-card, .note {
   border: 1px solid var(--border);
   border-radius: 22px;
@@ -497,7 +527,7 @@ footer {
   color: #b7bdb3;
 }
 
-/* Mobile app-style navigation */
+/* Full-screen app navigation */
 .mobile-topbar,
 .mobile-backdrop,
 .mobile-sidebar-header,
@@ -505,7 +535,7 @@ footer {
   display: none;
 }
 
-@media (max-width: 760px) {
+@media screen {
   html, body {
     width: 100%;
     height: 100%;
@@ -846,8 +876,8 @@ footer {
   }
 }
 
-/* Mobile bottom sheet */
-@media (max-width: 760px) {
+/* City details panel */
+@media screen {
   .mobile-city-card {
     transition: transform .22s ease, opacity .22s ease;
   }
@@ -956,5 +986,65 @@ footer {
   body.mobile-sheet-open .map-actions {
     opacity: .35;
     pointer-events: none;
+  }
+}
+
+@media (min-width: 761px) {
+  .mobile-topbar {
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
+    left: 20px;
+    right: auto;
+    top: 20px;
+    width: min(420px, calc(100% - 40px));
+    min-height: 64px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 18px;
+    background: rgba(20,25,20,.88);
+    box-shadow: 0 14px 40px rgba(0,0,0,.28);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .mobile-brand { text-align: left; }
+  .mobile-brand strong { font-size: 1.15rem; }
+
+  .mobile-city-card {
+    left: 20px;
+    right: auto;
+    bottom: 20px;
+    width: min(400px, calc(100% - 40px));
+  }
+
+  .mobile-bottom-sheet {
+    left: 20px;
+    right: auto;
+    bottom: 20px;
+    width: min(480px, calc(100% - 40px));
+    max-height: min(72dvh, 560px);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 22px;
+    transform: translateY(calc(100% + 24px));
+  }
+
+  .sidebar {
+    width: min(420px, 36vw);
+    padding: 20px 18px 28px;
+  }
+
+  .mobile-sidebar-header {
+    margin: -20px -18px 18px;
+    padding: 20px 20px 12px;
+  }
+
+  .map-actions {
+    right: 20px;
+    bottom: 20px;
+  }
+
+  #fitRoute { display: none; }
+
+  .leaflet-control-attribution {
+    max-width: calc(100vw - 440px);
   }
 }
