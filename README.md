@@ -10,6 +10,7 @@ Aplicação web estática com mapa interativo da Trilha do Imperador, de Piaçab
 - seleção manual de cada cidade;
 - modo automático "Percorrer rota";
 - destaque progressivo do percurso;
+- seleção do traçado esquemático, da rota de moto em asfalto ou da rota mista para bike fornecidas em GPX;
 - layout responsivo para desktop e celular;
 - compatível com GitHub Pages;
 - sem backend e sem etapa de build.
@@ -27,7 +28,7 @@ Após a publicação, o GitHub exibirá a URL do site.
 
 ## Observação sobre a rota
 
-A aplicação conecta as sedes municipais para representar visualmente a sequência da Trilha do Imperador. Essa linha é esquemática e não deve ser utilizada como track GPS ou instrução de navegação.
+A visão geral conecta as sedes municipais para representar visualmente a sequência da Trilha do Imperador. Essa linha é esquemática e não deve ser utilizada como track GPS ou instrução de navegação. As opções "Moto · Asfalto" e "Bike · Misto" usam, respectivamente, os arquivos `rota-moto-asfalto.gpx` e `rota-bike-misto.gpx` fornecidos pelo autor do projeto; os marcadores das cidades continuam nas coordenadas de referência originais.
 
 A referência pública consultada no desenvolvimento descreve um track Piaçabuçu → Água Branca com aproximadamente 349,85 km.
 

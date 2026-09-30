@@ -102,6 +102,10 @@
     progressText: document.getElementById("progressText"),
     fitRoute: document.getElementById("fitRoute"),
     playRoute: document.getElementById("playRoute"),
+    routeMode: document.getElementById("routeMode"),
+    routeDistance: document.getElementById("routeDistance"),
+    routeDistanceLabel: document.getElementById("routeDistanceLabel"),
+    routeNoteText: document.getElementById("routeNoteText"),
 
     mobileMenuToggle: document.getElementById("mobileMenuToggle"),
     mobileMenuClose: document.getElementById("mobileMenuClose"),
@@ -170,6 +174,21 @@
 
   const markers = [];
   let activeIndex = 0;
+  let activeRoutePoints = latLngs;
+  let activeMilestones = cities.map((_, index) => index);
+  const routeSources = {
+    "moto-asfalto": {
+      file: "rota-moto-asfalto.gpx",
+      label: "Moto · Asfalto",
+      note: "Traçado para moto em asfalto criado pelo autor do projeto. Os marcadores das cidades mantêm suas coordenadas de referência. Confira as condições atuais das vias antes de seguir."
+    },
+    "bike-misto": {
+      file: "rota-bike-misto.gpx",
+      label: "Bike · Misto",
+      note: "Traçado misto para bicicleta criado pelo autor do projeto. Os marcadores das cidades mantêm suas coordenadas de referência. Confira as condições atuais das vias antes de seguir."
+    }
+  };
+  const loadedRoutes = {};
   let playTimer = null;
   let playing = false;
   let refreshFrame = null;
@@ -201,6 +220,36 @@
 
   function fitWholeRoute() {
     refreshMapSize(true);
+  }
+
+  function setRouteMode(mode) {
+    const route = loadedRoutes[mode];
+    if (mode !== "schematic" && !route) return;
+
+    stopPlaying();
+    activeRoutePoints = route ? route.points : latLngs;
+    activeMilestones = route
+      ? route.milestones
+      : cities.map((_, index) => index);
+
+    fullRoute.setLatLngs(activeRoutePoints);
+    fullRoute.setStyle({ dashArray: route ? null : "10 9" });
+    selectCity(activeIndex, false);
+
+    if (el.routeDistance) {
+      el.routeDistance.textContent = route ? `${route.distanceKm} km` : "~350 km";
+    }
+    if (el.routeDistanceLabel) {
+      el.routeDistanceLabel.textContent = route ? "rota informada" : "track de referência";
+    }
+    if (el.routeNoteText) {
+      el.routeNoteText.textContent = route
+        ? route.note
+        : "Os pontos com indicação ‘placa verificada’ usam coordenadas lidas diretamente nos registros fotográficos fornecidos. Os demais ainda usam a sede municipal como referência. A ligação entre cidades é esquemática e não substitui um arquivo GPX ou navegação viária.";
+    }
+
+    setMobileMenu(false);
+    fitWholeRoute();
   }
 
   function setMobileMenu(open) {
@@ -317,7 +366,10 @@
       }
     });
 
-    completedRoute.setLatLngs(latLngs.slice(0, activeIndex + 1));
+    const progressEnd = activeIndex === cities.length - 1
+      ? activeRoutePoints.length
+      : activeMilestones[activeIndex] + 1;
+    completedRoute.setLatLngs(activeRoutePoints.slice(0, progressEnd));
 
     if (pan) {
       const targetZoom = city.verifiedPlaque ? 15 : 12;
@@ -470,6 +522,10 @@
     selectCity(activeIndex + 1, true);
   });
 
+  el.routeMode?.addEventListener("change", () => {
+    setRouteMode(el.routeMode.value);
+  });
+
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
 
@@ -496,4 +552,62 @@
 
   fitWholeRoute();
   selectCity(0, false);
+
+  Object.entries(routeSources).forEach(([mode, source]) => {
+    fetch(source.file)
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.text();
+      })
+      .then((xml) => {
+        const documentGpx = new DOMParser().parseFromString(xml, "application/xml");
+        const trackPoints = documentGpx.getElementsByTagNameNS(
+          "http://www.topografix.com/GPX/1/1", "trkpt"
+        );
+        const points = Array.from(trackPoints, (point) => [
+          Number(point.getAttribute("lat")),
+          Number(point.getAttribute("lon"))
+        ]);
+        if (points.length < 2 || points.some(([lat, lng]) => !Number.isFinite(lat) || !Number.isFinite(lng))) {
+          throw new Error("Traçado GPX inválido");
+        }
+
+        let distance = 0;
+        for (let index = 1; index < points.length; index++) {
+          distance += map.distance(points[index - 1], points[index]);
+        }
+
+        let fromIndex = 0;
+        const milestones = cities.map((city) => {
+          let nearestIndex = fromIndex;
+          let nearestDistance = Infinity;
+          for (let index = fromIndex; index < points.length; index++) {
+            const currentDistance = map.distance([city.lat, city.lng], points[index]);
+            if (currentDistance < nearestDistance) {
+              nearestDistance = currentDistance;
+              nearestIndex = index;
+            }
+          }
+          fromIndex = nearestIndex;
+          return nearestIndex;
+        });
+
+        loadedRoutes[mode] = {
+          ...source,
+          points,
+          milestones,
+          distanceKm: (distance / 1000).toFixed(1)
+        };
+        const option = el.routeMode?.querySelector(`option[value="${mode}"]`);
+        if (option) {
+          option.disabled = false;
+          option.textContent = source.label;
+        }
+      })
+      .catch((error) => {
+        console.error(`Não foi possível carregar ${source.label}:`, error);
+        const option = el.routeMode?.querySelector(`option[value="${mode}"]`);
+        if (option) option.textContent = `${source.label} (indisponível)`;
+      });
+  });
 })();

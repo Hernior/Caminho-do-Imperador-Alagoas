@@ -91,9 +91,17 @@
           <p>Explore o percurso de <strong>Piaçabuçu</strong> a <strong>Água Branca</strong>, cidade a cidade, pelo Baixo São Francisco e Sertão alagoano.</p>
           <div class="route-stats" aria-label="Resumo da rota">
             <div><strong>11</strong><span>cidades</span></div>
-            <div><strong>~350 km</strong><span>track de referência</span></div>
+            <div><strong id="routeDistance">~350 km</strong><span id="routeDistanceLabel">track de referência</span></div>
             <div><strong>1 sentido</strong><span>litoral → sertão</span></div>
           </div>
+        </section>
+        <section class="route-choice">
+          <label for="routeMode">Traçado exibido</label>
+          <select id="routeMode">
+            <option value="schematic">Visão geral · esquemática</option>
+            <option value="moto-asfalto" disabled>Moto · Asfalto (carregando)</option>
+            <option value="bike-misto" disabled>Bike · Misto (carregando)</option>
+          </select>
         </section>
         <section class="active-card" aria-live="polite">
           <p class="step-label">ETAPA <span id="stageNumber">01</span></p>
@@ -117,7 +125,7 @@
 
         <section class="note">
           <strong>Sobre o traçado</strong>
-          <p>
+          <p id="routeNoteText">
             Os pontos com indicação “placa verificada” usam coordenadas lidas diretamente nos registros fotográficos fornecidos. Os demais ainda usam a sede municipal como referência.
             Ela não substitui um arquivo GPX, navegação viária ou o track histórico detalhado.
           </p>
