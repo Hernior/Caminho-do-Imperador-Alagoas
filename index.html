@@ -55,7 +55,7 @@
         <span class="mobile-city-chevron">⌃</span>
       </button>
 
-      <section id="mobileBottomSheet" class="mobile-bottom-sheet" aria-hidden="true">
+      <section id="mobileBottomSheet" class="mobile-bottom-sheet" role="dialog" aria-modal="true" aria-labelledby="mobileSheetCity" aria-hidden="true" inert>
         <button id="mobileSheetHandle" class="mobile-sheet-handle" type="button" aria-label="Recolher painel">
           <span></span>
         </button>
@@ -65,7 +65,7 @@
             ETAPA <span id="mobileSheetStage">01</span>
           </div>
 
-          <h2 id="mobileSheetCity">Piaçabuçu</h2>
+          <h2 id="mobileSheetCity" tabindex="-1">Piaçabuçu</h2>
           <p id="mobileSheetDescription"></p>
           <a id="mobileSheetPermalink" class="point-link" target="_blank" rel="noopener noreferrer">Link direto deste ponto ↗</a>
           <nav id="mobileSheetNavigation" class="city-navigation" aria-label="Navegar até o próximo ponto">
@@ -109,7 +109,7 @@
         </div>
       </section>
 
-      <aside class="sidebar" id="routeSidebar">
+      <aside class="sidebar" id="routeSidebar" role="dialog" aria-modal="true" aria-label="Rota" aria-hidden="true" inert>
         <div class="mobile-sidebar-header">
           <strong>Rota</strong>
           <button id="mobileMenuClose" class="mobile-close-button" type="button" aria-label="Fechar menu">×</button>

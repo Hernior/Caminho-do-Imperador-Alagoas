@@ -273,6 +273,7 @@
     mobileMenuToggle: document.getElementById("mobileMenuToggle"),
     mobileMenuClose: document.getElementById("mobileMenuClose"),
     mobileBackdrop: document.getElementById("mobileBackdrop"),
+    routeSidebar: document.getElementById("routeSidebar"),
     mobileFitRoute: document.getElementById("mobileFitRoute"),
 
     mobileCityCard: document.getElementById("mobileCityCard"),
@@ -429,7 +430,14 @@
 
   function setMobileMenu(open) {
     if (document.body.classList.contains("mobile-menu-open") === open) return;
+    if (open) setMobileSheet(false);
+    const focusWasInside = el.routeSidebar?.contains(document.activeElement);
+
     document.body.classList.toggle("mobile-menu-open", open);
+    if (el.routeSidebar) {
+      el.routeSidebar.inert = !open;
+      el.routeSidebar.setAttribute("aria-hidden", open ? "false" : "true");
+    }
 
     if (el.mobileMenuToggle) {
       el.mobileMenuToggle.setAttribute("aria-expanded", open ? "true" : "false");
@@ -439,9 +447,8 @@
       el.mobileBackdrop.hidden = !open;
     }
 
-    if (open) {
-      setMobileSheet(false);
-    }
+    if (open) el.mobileMenuClose?.focus();
+    else if (focusWasInside) el.mobileMenuToggle?.focus();
 
     refreshMapSize();
   }
@@ -449,18 +456,20 @@
   function setMobileSheet(open) {
     if (!el.mobileBottomSheet || !el.mobileCityCard) return;
     if (document.body.classList.contains("mobile-sheet-open") === open) return;
+    if (open) setMobileMenu(false);
+    const focusWasInside = el.mobileBottomSheet.contains(document.activeElement);
 
     el.mobileBottomSheet.classList.toggle("open", open);
     el.mobileBottomSheet.setAttribute("aria-hidden", open ? "false" : "true");
+    el.mobileBottomSheet.inert = !open;
 
     el.mobileCityCard.classList.toggle("sheet-open", open);
     el.mobileCityCard.setAttribute("aria-expanded", open ? "true" : "false");
 
     document.body.classList.toggle("mobile-sheet-open", open);
 
-    if (open) {
-      setMobileMenu(false);
-    }
+    if (open) el.mobileSheetCity?.focus();
+    else if (focusWasInside) el.mobileCityCard.focus();
 
     refreshMapSize();
   }
@@ -802,14 +811,34 @@
   });
 
   document.addEventListener("keydown", (event) => {
+    const openPanel = document.body.classList.contains("mobile-sheet-open")
+      ? el.mobileBottomSheet
+      : document.body.classList.contains("mobile-menu-open") ? el.routeSidebar : null;
+
+    if (event.key === "Tab" && openPanel) {
+      const focusable = Array.from(openPanel.querySelectorAll("button:not([disabled]), a[href], select:not([disabled])"))
+        .filter((item) => item.getClientRects().length > 0);
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (first && ((!openPanel.contains(document.activeElement)) ||
+          (event.shiftKey && document.activeElement === first) ||
+          (!event.shiftKey && document.activeElement === last))) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      }
+      return;
+    }
+
     if (event.key !== "Escape") return;
 
     if (document.body.classList.contains("mobile-sheet-open")) {
+      event.preventDefault();
       setMobileSheet(false);
       return;
     }
 
     if (document.body.classList.contains("mobile-menu-open")) {
+      event.preventDefault();
       setMobileMenu(false);
     }
   });

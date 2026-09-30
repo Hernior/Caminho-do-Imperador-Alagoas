@@ -26,7 +26,8 @@ body {
 
 button, a { font: inherit; }
 
-button:focus-visible, a:focus-visible {
+button:focus-visible, a:focus-visible, select:focus-visible,
+.mobile-sheet-content h2:focus {
   outline: 3px solid var(--accent-strong);
   outline-offset: 3px;
 }
