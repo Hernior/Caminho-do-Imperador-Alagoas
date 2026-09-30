@@ -139,10 +139,17 @@
     scrollWheelZoom: true
   });
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: "&copy; OpenStreetMap contributors"
-  }).addTo(map);
+  });
+
+  tiles.on("loading", () => console.info("[tiles] loading"));
+  tiles.on("load", () => console.info("[tiles] load"));
+  tiles.on("tileerror", (event) => {
+    console.error("[tiles] tileerror", event.tile && event.tile.src, event.error);
+  });
+  tiles.addTo(map);
 
   const latLngs = cities.map((city) => [city.lat, city.lng]);
 
@@ -165,19 +172,39 @@
   let activeIndex = 0;
   let playTimer = null;
   let playing = false;
+  let refreshFrame = null;
+  let fitPending = false;
 
   function isMobile() {
     return window.matchMedia("(max-width: 760px)").matches;
   }
 
-  function fitWholeRoute() {
-    map.fitBounds(fullRoute.getBounds(), {
-      paddingTopLeft: isMobile() ? [28, 88] : [48, 48],
-      paddingBottomRight: isMobile() ? [28, 110] : [48, 48]
+  function refreshMapSize(fitRoute = false) {
+    fitPending = fitPending || fitRoute;
+    if (refreshFrame !== null) return;
+
+    refreshFrame = window.requestAnimationFrame(() => {
+      refreshFrame = null;
+      const container = map.getContainer();
+      if (!container.clientWidth || !container.clientHeight) return;
+
+      map.invalidateSize({ pan: false, debounceMoveend: true });
+      if (fitPending) {
+        fitPending = false;
+        map.fitBounds(fullRoute.getBounds(), {
+          paddingTopLeft: isMobile() ? [28, 88] : [48, 48],
+          paddingBottomRight: isMobile() ? [28, 110] : [48, 48]
+        });
+      }
     });
   }
 
+  function fitWholeRoute() {
+    refreshMapSize(true);
+  }
+
   function setMobileMenu(open) {
+    if (document.body.classList.contains("mobile-menu-open") === open) return;
     document.body.classList.toggle("mobile-menu-open", open);
 
     if (el.mobileMenuToggle) {
@@ -192,11 +219,12 @@
       setMobileSheet(false);
     }
 
-    window.setTimeout(() => map.invalidateSize(), 260);
+    refreshMapSize();
   }
 
   function setMobileSheet(open) {
     if (!el.mobileBottomSheet || !el.mobileCityCard) return;
+    if (document.body.classList.contains("mobile-sheet-open") === open) return;
 
     el.mobileBottomSheet.classList.toggle("open", open);
     el.mobileBottomSheet.setAttribute("aria-hidden", open ? "false" : "true");
@@ -209,6 +237,8 @@
     if (open) {
       setMobileMenu(false);
     }
+
+    refreshMapSize();
   }
 
   function markerIcon(index, verified) {
@@ -453,11 +483,17 @@
     }
   });
 
-  window.addEventListener("resize", () => {
-    window.setTimeout(() => map.invalidateSize(), 100);
+  window.addEventListener("load", () => refreshMapSize(), { once: true });
+  window.addEventListener("resize", () => refreshMapSize());
+  window.addEventListener("orientationchange", () => refreshMapSize());
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) refreshMapSize();
   });
+
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(() => refreshMapSize()).observe(map.getContainer());
+  }
 
   fitWholeRoute();
   selectCity(0, false);
-  window.setTimeout(() => map.invalidateSize(), 150);
 })();
