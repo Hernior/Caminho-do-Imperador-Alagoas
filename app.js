@@ -255,8 +255,8 @@
     cityRegionSources: document.getElementById("cityRegionSources"),
     cityStays: document.getElementById("cityStays"),
     cityFood: document.getElementById("cityFood"),
-    cityNavigation: document.getElementById("cityNavigation"),
-    cityNavigationTarget: document.getElementById("cityNavigationTarget"),
+    cityPrevCity: document.getElementById("cityPrevCity"),
+    cityNextCity: document.getElementById("cityNextCity"),
     cityGoogleLink: document.getElementById("cityGoogleLink"),
     cityWazeLink: document.getElementById("cityWazeLink"),
     coordinates: document.getElementById("coordinates"),
@@ -295,8 +295,6 @@
     mobileSheetRegionSources: document.getElementById("mobileSheetRegionSources"),
     mobileSheetStays: document.getElementById("mobileSheetStays"),
     mobileSheetFood: document.getElementById("mobileSheetFood"),
-    mobileSheetNavigation: document.getElementById("mobileSheetNavigation"),
-    mobileSheetNavigationTarget: document.getElementById("mobileSheetNavigationTarget"),
     mobileSheetGoogleLink: document.getElementById("mobileSheetGoogleLink"),
     mobileSheetWazeLink: document.getElementById("mobileSheetWazeLink"),
     mobileSheetCoordinates: document.getElementById("mobileSheetCoordinates"),
@@ -534,12 +532,8 @@
     });
   }
 
-  function showNextNavigation(container, target, googleLink, wazeLink, nextCity) {
-    if (!container) return;
-    container.hidden = !nextCity;
-    if (!nextCity) return;
-
-    const destination = `${nextCity.lat},${nextCity.lng}`;
+  function showPointNavigation(googleLink, wazeLink, city) {
+    const destination = `${city.lat},${city.lng}`;
     const bikeMode = el.routeMode?.value === "bike-misto";
     const googleUrl = new URL("https://www.google.com/maps/dir/");
     googleUrl.searchParams.set("api", "1");
@@ -547,14 +541,11 @@
     googleUrl.searchParams.set("travelmode", bikeMode ? "bicycling" : "driving");
     googleUrl.searchParams.set("dir_action", "navigate");
 
-    if (target) target.textContent = nextCity.name;
     if (googleLink) {
       googleLink.href = googleUrl.href;
-      googleLink.textContent = bikeMode ? "Google Maps · bicicleta ↗" : "Google Maps ↗";
-      googleLink.setAttribute("aria-label", `Navegar até ${nextCity.name} pelo Google Maps`);
+      googleLink.setAttribute("aria-label", `Navegar até ${city.name} pelo Google Maps`);
     }
     if (wazeLink) {
-      wazeLink.hidden = bikeMode;
       const wazeUrl = new URL("https://waze.com/ul");
       wazeUrl.searchParams.set("ll", destination);
       wazeUrl.searchParams.set("navigate", "yes");
@@ -562,7 +553,7 @@
         wazeUrl.searchParams.set("vehicle_type", "motorcycle");
       }
       wazeLink.href = wazeUrl.href;
-      wazeLink.setAttribute("aria-label", `Navegar até ${nextCity.name} pelo Waze`);
+      wazeLink.setAttribute("aria-label", `Navegar até ${city.name} pelo Waze`);
     }
   }
 
@@ -599,7 +590,7 @@
     showSourceLinks(el.cityRegionSources, city.regionSources);
     showHospitality(el.cityStays, hospitality[activeIndex].stays);
     showHospitality(el.cityFood, hospitality[activeIndex].food);
-    showNextNavigation(el.cityNavigation, el.cityNavigationTarget, el.cityGoogleLink, el.cityWazeLink, cities[activeIndex + 1]);
+    showPointNavigation(el.cityGoogleLink, el.cityWazeLink, city);
     if (el.coordinates) {
       const elevation = city.elevation !== null ? ` • ${city.elevation} m` : "";
       el.coordinates.textContent = `${city.lat.toFixed(6)}, ${city.lng.toFixed(6)}${elevation}`;
@@ -623,7 +614,7 @@
     showSourceLinks(el.mobileSheetRegionSources, city.regionSources);
     showHospitality(el.mobileSheetStays, hospitality[activeIndex].stays);
     showHospitality(el.mobileSheetFood, hospitality[activeIndex].food);
-    showNextNavigation(el.mobileSheetNavigation, el.mobileSheetNavigationTarget, el.mobileSheetGoogleLink, el.mobileSheetWazeLink, cities[activeIndex + 1]);
+    showPointNavigation(el.mobileSheetGoogleLink, el.mobileSheetWazeLink, city);
     if (el.mobileSheetCoordinates) {
       el.mobileSheetCoordinates.textContent = `${city.lat.toFixed(6)}, ${city.lng.toFixed(6)}`;
     }
@@ -632,8 +623,12 @@
         city.elevation !== null ? `Elevação: ${city.elevation} m` : "";
     }
     if (el.mobileSheetOsmLink) el.mobileSheetOsmLink.href = osmHref;
-    if (el.mobilePrevCity) el.mobilePrevCity.disabled = activeIndex === 0;
-    if (el.mobileNextCity) el.mobileNextCity.disabled = activeIndex === cities.length - 1;
+    [el.mobilePrevCity, el.cityPrevCity].forEach((button) => {
+      if (button) button.disabled = activeIndex === 0;
+    });
+    [el.mobileNextCity, el.cityNextCity].forEach((button) => {
+      if (button) button.disabled = activeIndex === cities.length - 1;
+    });
 
     document.querySelectorAll(".city-button").forEach((button, buttonIndex) => {
       const active = buttonIndex === activeIndex;
@@ -794,16 +789,20 @@
     setMobileSheet(false);
   });
 
-  el.mobilePrevCity?.addEventListener("click", () => {
-    if (activeIndex <= 0) return;
-    stopPlaying();
-    selectCity(activeIndex - 1, true);
+  [el.mobilePrevCity, el.cityPrevCity].forEach((button) => {
+    button?.addEventListener("click", () => {
+      if (activeIndex <= 0) return;
+      stopPlaying();
+      selectCity(activeIndex - 1, true);
+    });
   });
 
-  el.mobileNextCity?.addEventListener("click", () => {
-    if (activeIndex >= cities.length - 1) return;
-    stopPlaying();
-    selectCity(activeIndex + 1, true);
+  [el.mobileNextCity, el.cityNextCity].forEach((button) => {
+    button?.addEventListener("click", () => {
+      if (activeIndex >= cities.length - 1) return;
+      stopPlaying();
+      selectCity(activeIndex + 1, true);
+    });
   });
 
   el.routeMode?.addEventListener("change", () => {

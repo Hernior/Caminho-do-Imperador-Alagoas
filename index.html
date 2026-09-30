@@ -18,6 +18,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-osm" viewBox="0 0 24 24">
+      <path d="M3 5.5 9 3l6 2.5L21 3v15.5L15 21l-6-2.5L3 21zM9 3v15.5m6-13V21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-google-maps" viewBox="0 0 24 24">
+      <path d="M12 22s7-7.2 7-13a7 7 0 1 0-14 0c0 5.8 7 13 7 13z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="12" cy="9" r="2.5" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-waze" viewBox="0 0 24 24">
+      <path d="M4 12a8 8 0 0 1 16 0c0 4.5-3.5 7-8 7H8l-3 2v-4a7 7 0 0 1-1-5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/>
+      <path d="M9 15c2 1.5 4 1.5 6 0" fill="none" stroke="currentColor" stroke-linecap="round"/>
+    </symbol>
+  </svg>
   <div class="mobile-topbar" aria-label="Navegação da rota">
       <button id="mobileMenuToggle" class="mobile-icon-button" type="button" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -68,14 +82,6 @@
           <h2 id="mobileSheetCity" tabindex="-1">Piaçabuçu</h2>
           <p id="mobileSheetDescription"></p>
           <a id="mobileSheetPermalink" class="point-link" target="_blank" rel="noopener noreferrer">Link direto deste ponto ↗</a>
-          <nav id="mobileSheetNavigation" class="city-navigation" aria-label="Navegar até o próximo ponto">
-            <strong>Próximo ponto: <span id="mobileSheetNavigationTarget"></span></strong>
-            <div class="city-navigation-links">
-              <a id="mobileSheetGoogleLink" class="button button-primary" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>
-              <a id="mobileSheetWazeLink" class="button button-secondary" target="_blank" rel="noopener noreferrer">Waze ↗</a>
-            </div>
-            <small>Saída da sua localização atual para a coordenada de referência do próximo ponto. Onde não há placa verificada, o destino é a sede municipal. O caminho pode diferir do GPX.</small>
-          </nav>
           <section class="city-history" aria-label="Contexto histórico">
             <h3>Durante a passagem do imperador</h3>
             <p class="visit-status">Relação com a viagem: <strong id="mobileSheetVisitStatus"></strong></p>
@@ -101,12 +107,14 @@
             <span id="mobileSheetElevation"></span>
           </div>
 
-          <div class="mobile-sheet-actions">
-            <button id="mobilePrevCity" class="button button-secondary" type="button">← Anterior</button>
-            <a id="mobileSheetOsmLink" class="button button-secondary" target="_blank" rel="noopener noreferrer">Mapa ↗</a>
-            <button id="mobileNextCity" class="button button-primary" type="button">Próxima →</button>
-          </div>
         </div>
+        <nav class="point-actions" aria-label="Controles do ponto selecionado">
+          <button id="mobilePrevCity" type="button" aria-label="Ponto anterior" title="Ponto anterior">←</button>
+          <a id="mobileSheetOsmLink" target="_blank" rel="noopener noreferrer" aria-label="Abrir ponto no OpenStreetMap" title="OpenStreetMap"><svg aria-hidden="true"><use href="#icon-osm"/></svg></a>
+          <a id="mobileSheetGoogleLink" target="_blank" rel="noopener noreferrer" aria-label="Navegar até o ponto pelo Google Maps" title="Google Maps"><svg aria-hidden="true"><use href="#icon-google-maps"/></svg></a>
+          <a id="mobileSheetWazeLink" target="_blank" rel="noopener noreferrer" aria-label="Navegar até o ponto pelo Waze" title="Waze"><svg aria-hidden="true"><use href="#icon-waze"/></svg></a>
+          <button id="mobileNextCity" type="button" aria-label="Próximo ponto" title="Próximo ponto">→</button>
+        </nav>
       </section>
 
       <aside class="sidebar" id="routeSidebar" role="dialog" aria-modal="true" aria-label="Rota" aria-hidden="true" inert>
@@ -132,18 +140,11 @@
           </select>
         </section>
         <section class="active-card" aria-live="polite">
+          <div class="active-card-content">
           <p class="step-label">ETAPA <span id="stageNumber">01</span></p>
           <h2 id="cityName">Piaçabuçu</h2>
           <p id="cityDescription"></p>
           <a id="cityPermalink" class="point-link" target="_blank" rel="noopener noreferrer">Link direto deste ponto ↗</a>
-          <nav id="cityNavigation" class="city-navigation" aria-label="Navegar até o próximo ponto">
-            <strong>Próximo ponto: <span id="cityNavigationTarget"></span></strong>
-            <div class="city-navigation-links">
-              <a id="cityGoogleLink" class="button button-primary" target="_blank" rel="noopener noreferrer">Google Maps ↗</a>
-              <a id="cityWazeLink" class="button button-secondary" target="_blank" rel="noopener noreferrer">Waze ↗</a>
-            </div>
-            <small>Saída da sua localização atual para a coordenada de referência do próximo ponto. Onde não há placa verificada, o destino é a sede municipal. O caminho pode diferir do GPX.</small>
-          </nav>
           <section class="city-history" aria-label="Contexto histórico">
             <h3>Durante a passagem do imperador</h3>
             <p class="visit-status">Relação com a viagem: <strong id="cityVisitStatus"></strong></p>
@@ -166,8 +167,15 @@
 
           <div class="coordinate-row">
             <span id="coordinates"></span>
-            <a id="osmLink" target="_blank" rel="noopener noreferrer">Abrir no OpenStreetMap ↗</a>
           </div>
+          </div>
+          <nav class="point-actions" aria-label="Controles do ponto selecionado">
+            <button id="cityPrevCity" type="button" aria-label="Ponto anterior" title="Ponto anterior">←</button>
+            <a id="osmLink" target="_blank" rel="noopener noreferrer" aria-label="Abrir ponto no OpenStreetMap" title="OpenStreetMap"><svg aria-hidden="true"><use href="#icon-osm"/></svg></a>
+            <a id="cityGoogleLink" target="_blank" rel="noopener noreferrer" aria-label="Navegar até o ponto pelo Google Maps" title="Google Maps"><svg aria-hidden="true"><use href="#icon-google-maps"/></svg></a>
+            <a id="cityWazeLink" target="_blank" rel="noopener noreferrer" aria-label="Navegar até o ponto pelo Waze" title="Waze"><svg aria-hidden="true"><use href="#icon-waze"/></svg></a>
+            <button id="cityNextCity" type="button" aria-label="Próximo ponto" title="Próximo ponto">→</button>
+          </nav>
         </section>
 
         <section>
