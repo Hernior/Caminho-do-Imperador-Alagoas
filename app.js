@@ -162,6 +162,10 @@
     cityHistorySources: document.getElementById("cityHistorySources"),
     cityRegion: document.getElementById("cityRegion"),
     cityRegionSources: document.getElementById("cityRegionSources"),
+    cityNavigation: document.getElementById("cityNavigation"),
+    cityNavigationTarget: document.getElementById("cityNavigationTarget"),
+    cityGoogleLink: document.getElementById("cityGoogleLink"),
+    cityWazeLink: document.getElementById("cityWazeLink"),
     coordinates: document.getElementById("coordinates"),
     osmLink: document.getElementById("osmLink"),
     stageNumber: document.getElementById("stageNumber"),
@@ -193,6 +197,10 @@
     mobileSheetHistorySources: document.getElementById("mobileSheetHistorySources"),
     mobileSheetRegion: document.getElementById("mobileSheetRegion"),
     mobileSheetRegionSources: document.getElementById("mobileSheetRegionSources"),
+    mobileSheetNavigation: document.getElementById("mobileSheetNavigation"),
+    mobileSheetNavigationTarget: document.getElementById("mobileSheetNavigationTarget"),
+    mobileSheetGoogleLink: document.getElementById("mobileSheetGoogleLink"),
+    mobileSheetWazeLink: document.getElementById("mobileSheetWazeLink"),
     mobileSheetCoordinates: document.getElementById("mobileSheetCoordinates"),
     mobileSheetElevation: document.getElementById("mobileSheetElevation"),
     mobileSheetOsmLink: document.getElementById("mobileSheetOsmLink"),
@@ -401,6 +409,38 @@
     });
   }
 
+  function showNextNavigation(container, target, googleLink, wazeLink, nextCity) {
+    if (!container) return;
+    container.hidden = !nextCity;
+    if (!nextCity) return;
+
+    const destination = `${nextCity.lat},${nextCity.lng}`;
+    const bikeMode = el.routeMode?.value === "bike-misto";
+    const googleUrl = new URL("https://www.google.com/maps/dir/");
+    googleUrl.searchParams.set("api", "1");
+    googleUrl.searchParams.set("destination", destination);
+    googleUrl.searchParams.set("travelmode", bikeMode ? "bicycling" : "driving");
+    googleUrl.searchParams.set("dir_action", "navigate");
+
+    if (target) target.textContent = nextCity.name;
+    if (googleLink) {
+      googleLink.href = googleUrl.href;
+      googleLink.textContent = bikeMode ? "Google Maps · bicicleta ↗" : "Google Maps ↗";
+      googleLink.setAttribute("aria-label", `Navegar até ${nextCity.name} pelo Google Maps`);
+    }
+    if (wazeLink) {
+      wazeLink.hidden = bikeMode;
+      const wazeUrl = new URL("https://waze.com/ul");
+      wazeUrl.searchParams.set("ll", destination);
+      wazeUrl.searchParams.set("navigate", "yes");
+      if (el.routeMode?.value === "moto-asfalto") {
+        wazeUrl.searchParams.set("vehicle_type", "motorcycle");
+      }
+      wazeLink.href = wazeUrl.href;
+      wazeLink.setAttribute("aria-label", `Navegar até ${nextCity.name} pelo Waze`);
+    }
+  }
+
   function selectCity(index, pan = false) {
     activeIndex = Math.max(0, Math.min(cities.length - 1, index));
     const city = cities[activeIndex];
@@ -414,6 +454,7 @@
     showSourceLinks(el.cityHistorySources, city.historySources);
     if (el.cityRegion) el.cityRegion.textContent = city.region;
     showSourceLinks(el.cityRegionSources, city.regionSources);
+    showNextNavigation(el.cityNavigation, el.cityNavigationTarget, el.cityGoogleLink, el.cityWazeLink, cities[activeIndex + 1]);
     if (el.coordinates) {
       const elevation = city.elevation !== null ? ` • ${city.elevation} m` : "";
       el.coordinates.textContent = `${city.lat.toFixed(6)}, ${city.lng.toFixed(6)}${elevation}`;
@@ -434,6 +475,7 @@
     showSourceLinks(el.mobileSheetHistorySources, city.historySources);
     if (el.mobileSheetRegion) el.mobileSheetRegion.textContent = city.region;
     showSourceLinks(el.mobileSheetRegionSources, city.regionSources);
+    showNextNavigation(el.mobileSheetNavigation, el.mobileSheetNavigationTarget, el.mobileSheetGoogleLink, el.mobileSheetWazeLink, cities[activeIndex + 1]);
     if (el.mobileSheetCoordinates) {
       el.mobileSheetCoordinates.textContent = `${city.lat.toFixed(6)}, ${city.lng.toFixed(6)}`;
     }

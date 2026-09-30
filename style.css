@@ -307,6 +307,22 @@ h1 {
 .city-history-sources a { color: var(--accent-strong); }
 .city-history-sources span { color: var(--muted); }
 
+.city-navigation {
+  display: grid;
+  gap: 9px;
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--panel-2);
+}
+
+.city-navigation[hidden], .city-navigation-links a[hidden] { display: none; }
+.city-navigation strong { color: var(--text); font-size: .9rem; }
+.city-navigation small { color: var(--muted); line-height: 1.4; }
+.city-navigation-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.city-navigation-links .button { text-decoration: none; text-align: center; }
+
 .coordinate-row {
   display: flex;
   flex-direction: column;
