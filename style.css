@@ -278,6 +278,14 @@ h1 {
   line-height: 1.65;
 }
 
+.point-link {
+  display: inline-block;
+  margin-top: 2px;
+  color: var(--accent-strong);
+  font-size: .8rem;
+  font-weight: 750;
+}
+
 .city-history {
   margin-top: 18px;
   padding-top: 16px;

@@ -4,6 +4,7 @@
   const cities = [
     {
       name: "Piaçabuçu",
+      slug: "piacabucu",
       visitStatus: "Desembarque registrado",
       lat: -10.407753,
       lng: -36.435382,
@@ -17,6 +18,7 @@
     },
     {
       name: "Penedo",
+      slug: "penedo",
       visitStatus: "Visita registrada",
       lat: -10.290822,
       lng: -36.586380,
@@ -30,6 +32,7 @@
     },
     {
       name: "Porto Real do Colégio",
+      slug: "porto-real-do-colegio",
       visitStatus: "Visita registrada",
       lat: -10.188428,
       lng: -36.839223,
@@ -43,6 +46,7 @@
     },
     {
       name: "São Brás",
+      slug: "sao-bras",
       visitStatus: "Observado do rio",
       lat: -10.1141,
       lng: -36.8522,
@@ -56,6 +60,7 @@
     },
     {
       name: "Traipu",
+      slug: "traipu",
       visitStatus: "Visita registrada",
       lat: -9.971902,
       lng: -37.001545,
@@ -69,6 +74,7 @@
     },
     {
       name: "Belo Monte",
+      slug: "belo-monte",
       visitStatus: "Visita à região atual",
       lat: -9.8227,
       lng: -37.2770,
@@ -85,6 +91,7 @@
     },
     {
       name: "Pão de Açúcar",
+      slug: "pao-de-acucar",
       visitStatus: "Visita registrada",
       lat: -9.750112,
       lng: -37.435620,
@@ -101,6 +108,7 @@
     },
     {
       name: "Piranhas",
+      slug: "piranhas",
       visitStatus: "Desembarque registrado",
       lat: -9.6240,
       lng: -37.7570,
@@ -114,6 +122,7 @@
     },
     {
       name: "Olho d’Água do Casado",
+      slug: "olho-dagua-do-casado",
       visitStatus: "Relação local incerta",
       lat: -9.5036,
       lng: -37.8301,
@@ -133,6 +142,7 @@
     },
     {
       name: "Delmiro Gouveia",
+      slug: "delmiro-gouveia",
       visitStatus: "Referência à região atual",
       lat: -9.3841,
       lng: -37.9978,
@@ -152,6 +162,7 @@
     },
     {
       name: "Água Branca",
+      slug: "agua-branca",
       visitStatus: "Mencionada, sem visita à sede",
       lat: -9.2620,
       lng: -37.9380,
@@ -236,6 +247,7 @@
     cityList: document.getElementById("cityList"),
     cityName: document.getElementById("cityName"),
     cityDescription: document.getElementById("cityDescription"),
+    cityPermalink: document.getElementById("cityPermalink"),
     cityHistory: document.getElementById("cityHistory"),
     cityVisitStatus: document.getElementById("cityVisitStatus"),
     cityHistorySources: document.getElementById("cityHistorySources"),
@@ -274,6 +286,7 @@
     mobileSheetStage: document.getElementById("mobileSheetStage"),
     mobileSheetCity: document.getElementById("mobileSheetCity"),
     mobileSheetDescription: document.getElementById("mobileSheetDescription"),
+    mobileSheetPermalink: document.getElementById("mobileSheetPermalink"),
     mobileSheetHistory: document.getElementById("mobileSheetHistory"),
     mobileSheetVisitStatus: document.getElementById("mobileSheetVisitStatus"),
     mobileSheetHistorySources: document.getElementById("mobileSheetHistorySources"),
@@ -544,12 +557,29 @@
     }
   }
 
+  function pointIndexFromHash() {
+    const slug = new URLSearchParams(window.location.hash.slice(1)).get("ponto");
+    const index = cities.findIndex((city) => city.slug === slug);
+    return index < 0 ? 0 : index;
+  }
+
   function selectCity(index, pan = false) {
     activeIndex = Math.max(0, Math.min(cities.length - 1, index));
     const city = cities[activeIndex];
     const stage = String(activeIndex + 1).padStart(2, "0");
     const verifiedText = city.verifiedPlaque ? "Placa verificada" : "Coordenada municipal";
     const osmHref = `https://www.openstreetmap.org/?mlat=${city.lat}&mlon=${city.lng}#map=16/${city.lat}/${city.lng}`;
+    const pointUrl = new URL(window.location.href);
+    pointUrl.hash = `ponto=${city.slug}`;
+    if (window.location.href !== pointUrl.href) {
+      window.history.replaceState(null, "", pointUrl.href);
+    }
+
+    [el.cityPermalink, el.mobileSheetPermalink].forEach((link) => {
+      if (!link) return;
+      link.href = pointUrl.href;
+      link.setAttribute("aria-label", `Abrir link direto para ${city.name}`);
+    });
 
     if (el.cityName) el.cityName.textContent = city.name;
     if (el.cityDescription) el.cityDescription.textContent = city.description;
@@ -785,6 +815,10 @@
   });
 
   window.addEventListener("load", () => refreshMapSize(), { once: true });
+  window.addEventListener("hashchange", () => {
+    stopPlaying();
+    selectCity(pointIndexFromHash(), true);
+  });
   window.addEventListener("resize", () => refreshMapSize());
   window.addEventListener("orientationchange", () => refreshMapSize());
   document.addEventListener("visibilitychange", () => {
@@ -795,8 +829,12 @@
     new ResizeObserver(() => refreshMapSize()).observe(map.getContainer());
   }
 
+  const initialIndex = pointIndexFromHash();
   fitWholeRoute();
-  selectCity(0, false);
+  selectCity(initialIndex, false);
+  if (initialIndex !== 0) {
+    window.requestAnimationFrame(() => selectCity(initialIndex, true));
+  }
 
   Object.entries(routeSources).forEach(([mode, source]) => {
     fetch(source.file)
