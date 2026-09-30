@@ -5,7 +5,6 @@ const cities = [
     lng: -36.435382,
     elevation: 0,
     verifiedPlaque: true,
-    image: "assets/placa-piacabucu.jpg",
     description: "Ponto verificado da placa física do Caminho do Imperador em Piaçabuçu."
   },
   {
@@ -14,7 +13,6 @@ const cities = [
     lng: -36.586380,
     elevation: 7,
     verifiedPlaque: true,
-    image: "assets/placa-penedo.jpg",
     description: "Ponto verificado da placa física do Caminho do Imperador em Penedo."
   },
   {
@@ -23,7 +21,6 @@ const cities = [
     lng: -36.839223,
     elevation: 6,
     verifiedPlaque: true,
-    image: "assets/placa-porto-real-do-colegio.jpg",
     description: "Ponto verificado da placa física do Caminho do Imperador em Porto Real do Colégio."
   },
   {
@@ -40,7 +37,6 @@ const cities = [
     lng: -37.001545,
     elevation: 8,
     verifiedPlaque: true,
-    image: "assets/placa-traipu.jpg",
     description: "Ponto verificado da placa física do Caminho do Imperador em Traipu."
   },
   {
@@ -57,7 +53,6 @@ const cities = [
     lng: -37.435620,
     elevation: 11,
     verifiedPlaque: true,
-    image: "assets/placa-pao-de-acucar.jpg",
     description: "Ponto verificado da placa física do Caminho do Imperador em Pão de Açúcar."
   },
   {
@@ -159,9 +154,6 @@ cities.forEach((city, index) => {
   if (city.elevation !== null) popup += `Elevação: ${city.elevation} m<br>`;
   popup += `${city.lat.toFixed(6)}, ${city.lng.toFixed(6)}<br>`;
   popup += `<small>${city.description}</small>`;
-  if (city.image) {
-    popup += `<br><img src="${city.image}" alt="Placa do Caminho do Imperador em ${city.name}" class="popup-photo">`;
-  }
 
   marker.bindPopup(popup, { maxWidth: 300 });
 
@@ -191,6 +183,7 @@ cities.forEach((city, index) => {
   button.addEventListener("click", () => {
     stopPlaying();
     selectCity(index, true);
+    if (window.innerWidth <= 760) setMobileMenu(false);
   });
 
   li.appendChild(button);
@@ -209,6 +202,24 @@ function selectCity(index, pan = false) {
   osmLink.href = `https://www.openstreetmap.org/?mlat=${city.lat}&mlon=${city.lng}#map=16/${city.lat}/${city.lng}`;
   stageNumber.textContent = String(activeIndex + 1).padStart(2, "0");
   progressText.textContent = `${activeIndex + 1} de ${cities.length}`;
+  if (mobileActiveCity) mobileActiveCity.textContent = city.name;
+  if (mobileCityName) mobileCityName.textContent = city.name;
+  if (mobileStage) mobileStage.textContent = String(activeIndex + 1).padStart(2, "0");
+  if (mobileCityStatus) {
+    mobileCityStatus.textContent = city.verifiedPlaque ? "Placa verificada" : "Coordenada municipal";
+  }
+  if (mobileSheetStage) mobileSheetStage.textContent = String(activeIndex + 1).padStart(2, "0");
+  if (mobileSheetCity) mobileSheetCity.textContent = city.name;
+  if (mobileSheetDescription) mobileSheetDescription.textContent = city.description;
+  if (mobileSheetCoordinates) mobileSheetCoordinates.textContent = `${city.lat.toFixed(6)}, ${city.lng.toFixed(6)}`;
+  if (mobileSheetElevation) {
+    mobileSheetElevation.textContent = city.elevation !== null ? `Elevação: ${city.elevation} m` : "";
+  }
+  if (mobileSheetOsmLink) {
+    mobileSheetOsmLink.href = `https://www.openstreetmap.org/?mlat=${city.lat}&mlon=${city.lng}#map=16/${city.lat}/${city.lng}`;
+  }
+  if (mobilePrevCity) mobilePrevCity.disabled = activeIndex === 0;
+  if (mobileNextCity) mobileNextCity.disabled = activeIndex === cities.length - 1;
 
   document.querySelectorAll(".city-button").forEach((button, i) => {
     button.classList.toggle("active", i === activeIndex);
@@ -238,12 +249,14 @@ function stopPlaying() {
   }
   playing = false;
   playRouteButton.textContent = "▶ Percorrer rota";
+  playRouteButton.classList.remove("is-playing");
 }
 
 function startPlaying() {
   stopPlaying();
   playing = true;
   playRouteButton.textContent = "■ Parar";
+  playRouteButton.classList.add("is-playing");
 
   if (activeIndex >= cities.length - 1) activeIndex = 0;
 
@@ -269,4 +282,81 @@ fitRouteButton.addEventListener("click", () => {
   map.fitBounds(fullRoute.getBounds(), { padding: [48, 48] });
 });
 
-selectCity(0, false);
+selectCity(0, false);const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+const mobileMenuClose = document.getElementById("mobileMenuClose");
+const mobileBackdrop = document.getElementById("mobileBackdrop");
+const mobileFitRoute = document.getElementById("mobileFitRoute");
+const mobileCityCard = document.getElementById("mobileCityCard");
+const mobileActiveCity = document.getElementById("mobileActiveCity");
+const mobileCityName = document.getElementById("mobileCityName");
+const mobileCityStatus = document.getElementById("mobileCityStatus");
+const mobileStage = document.getElementById("mobileStage");
+
+function setMobileMenu(open) {
+  document.body.classList.toggle("mobile-menu-open", open);
+  mobileMenuToggle?.setAttribute("aria-expanded", open ? "true" : "false");
+  if (mobileBackdrop) mobileBackdrop.hidden = !open;
+  setTimeout(() => map.invalidateSize(), 260);
+}
+
+mobileMenuToggle?.addEventListener("click", () => { setMobileSheet(false); setMobileMenu(true); });
+mobileMenuClose?.addEventListener("click", () => setMobileMenu(false));
+mobileBackdrop?.addEventListener("click", () => setMobileMenu(false));
+
+mobileFitRoute?.addEventListener("click", () => {
+  stopPlaying();
+  map.fitBounds(fullRoute.getBounds(), { padding: [42, 42] });
+});
+
+
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && document.body.classList.contains("mobile-menu-open")) {
+    setMobileMenu(false);
+  }
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 760) {
+    setMobileMenu(false);
+  }
+  setTimeout(() => map.invalidateSize(), 100);
+});const mobileBottomSheet = document.getElementById("mobileBottomSheet");
+const mobileSheetHandle = document.getElementById("mobileSheetHandle");
+const mobileSheetStage = document.getElementById("mobileSheetStage");
+const mobileSheetCity = document.getElementById("mobileSheetCity");
+const mobileSheetDescription = document.getElementById("mobileSheetDescription");
+const mobileSheetCoordinates = document.getElementById("mobileSheetCoordinates");
+const mobileSheetElevation = document.getElementById("mobileSheetElevation");
+const mobileSheetOsmLink = document.getElementById("mobileSheetOsmLink");
+const mobilePrevCity = document.getElementById("mobilePrevCity");
+const mobileNextCity = document.getElementById("mobileNextCity");
+
+function setMobileSheet(open) {
+  if (!mobileBottomSheet || !mobileCityCard) return;
+
+  mobileBottomSheet.classList.toggle("open", open);
+  mobileBottomSheet.setAttribute("aria-hidden", open ? "false" : "true");
+  mobileCityCard.classList.toggle("sheet-open", open);
+  mobileCityCard.setAttribute("aria-expanded", open ? "true" : "false");
+  document.body.classList.toggle("mobile-sheet-open", open);
+}
+
+mobileCityCard?.addEventListener("click", () => setMobileSheet(true));
+mobileSheetHandle?.addEventListener("click", () => setMobileSheet(false));
+
+mobilePrevCity?.addEventListener("click", () => {
+  if (activeIndex <= 0) return;
+  selectCity(activeIndex - 1, true);
+});
+
+mobileNextCity?.addEventListener("click", () => {
+  if (activeIndex >= cities.length - 1) return;
+  selectCity(activeIndex + 1, true);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && document.body.classList.contains("mobile-sheet-open")) {
+    setMobileSheet(false);
+  }
+});

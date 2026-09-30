@@ -56,7 +56,6 @@ A referência pública consultada no desenvolvimento descreve um track Piaçabu�
 | Traipu | -9.971902 | -37.001545 | 8 m |
 | Pão de Açúcar | -9.750112 | -37.435620 | 11 m |
 
-As fotos correspondentes estão em `assets/` e aparecem nos popups do mapa.
 
 ## Tecnologias
 

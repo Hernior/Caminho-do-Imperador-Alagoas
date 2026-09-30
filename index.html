@@ -18,7 +18,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app-shell">
+  <div class="mobile-topbar" aria-label="Navegação móvel">
+      <button id="mobileMenuToggle" class="mobile-icon-button" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="mobile-brand">
+        <strong>Trilha do Imperador</strong>
+        <span id="mobileActiveCity">Piaçabuçu</span>
+      </div>
+      <button id="mobileFitRoute" class="mobile-icon-button map-fit-icon" type="button" aria-label="Ver rota completa">⌖</button>
+    </div>
+    <div id="mobileBackdrop" class="mobile-backdrop" hidden></div>
+
+    <div class="app-shell">
     <header class="hero">
       <div>
         <p class="eyebrow">ALAGOAS • CAMINHO HISTÓRICO</p>
@@ -51,7 +63,46 @@
         </div>
       </section>
 
-      <aside class="sidebar">
+      <button id="mobileCityCard" class="mobile-city-card" type="button" aria-label="Abrir detalhes da cidade atual" aria-expanded="false">
+        <span class="mobile-city-step" id="mobileStage">01</span>
+        <span class="mobile-city-text">
+          <strong id="mobileCityName">Piaçabuçu</strong>
+          <small id="mobileCityStatus">Placa verificada</small>
+        </span>
+        <span class="mobile-city-chevron">⌃</span>
+      </button>
+
+      <section id="mobileBottomSheet" class="mobile-bottom-sheet" aria-hidden="true">
+        <button id="mobileSheetHandle" class="mobile-sheet-handle" type="button" aria-label="Recolher painel">
+          <span></span>
+        </button>
+
+        <div class="mobile-sheet-content">
+          <div class="mobile-sheet-kicker">
+            ETAPA <span id="mobileSheetStage">01</span>
+          </div>
+
+          <h2 id="mobileSheetCity">Piaçabuçu</h2>
+          <p id="mobileSheetDescription"></p>
+
+          <div class="mobile-sheet-meta">
+            <span id="mobileSheetCoordinates"></span>
+            <span id="mobileSheetElevation"></span>
+          </div>
+
+          <div class="mobile-sheet-actions">
+            <button id="mobilePrevCity" class="button button-secondary" type="button">← Anterior</button>
+            <a id="mobileSheetOsmLink" class="button button-secondary" target="_blank" rel="noopener noreferrer">Mapa ↗</a>
+            <button id="mobileNextCity" class="button button-primary" type="button">Próxima →</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar" id="routeSidebar">
+        <div class="mobile-sidebar-header">
+          <strong>Rota</strong>
+          <button id="mobileMenuClose" class="mobile-close-button" type="button" aria-label="Fechar menu">×</button>
+        </div>
         <section class="active-card" aria-live="polite">
           <p class="step-label">ETAPA <span id="stageNumber">01</span></p>
           <h2 id="cityName">Piaçabuçu</h2>
