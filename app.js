@@ -8,7 +8,9 @@
       lng: -36.435382,
       elevation: 0,
       verifiedPlaque: true,
-      description: "Ponto verificado da placa física do Caminho do Imperador em Piaçabuçu."
+      description: "Ponto verificado da placa física do Caminho do Imperador em Piaçabuçu.",
+      history: "Em 14 de outubro de 1859, D. Pedro II desembarcou em Piaçabuçu ao entrar no rio São Francisco. Registrou a recepção com música de rabecas, observou as casas da então freguesia e a paisagem da foz antes de seguir rio acima.",
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=16" }]
     },
     {
       name: "Penedo",
@@ -16,7 +18,9 @@
       lng: -36.586380,
       elevation: 7,
       verifiedPlaque: true,
-      description: "Ponto verificado da placa física do Caminho do Imperador em Penedo."
+      description: "Ponto verificado da placa física do Caminho do Imperador em Penedo.",
+      history: "D. Pedro II chegou a Penedo em 14 de outubro de 1859. Foi recebido no porto, participou de cerimônia no Convento de São Francisco e percorreu a cidade, registrando a Câmara, as igrejas e a navegação no rio.",
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=16" }]
     },
     {
       name: "Porto Real do Colégio",
@@ -24,7 +28,9 @@
       lng: -36.839223,
       elevation: 6,
       verifiedPlaque: true,
-      description: "Ponto verificado da placa física do Caminho do Imperador em Porto Real do Colégio."
+      description: "Ponto verificado da placa física do Caminho do Imperador em Porto Real do Colégio.",
+      history: "Na subida do São Francisco, em 16 de outubro de 1859, o imperador visitou Porto Real do Colégio, diante de Propriá. Em seu diário, anotou a existência de uma antiga igreja e de um convento jesuíta que já haviam desaparecido.",
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=20" }]
     },
     {
       name: "São Brás",
@@ -32,7 +38,9 @@
       lng: -36.8522,
       elevation: null,
       verifiedPlaque: false,
-      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado."
+      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado.",
+      history: "Em 16 de outubro de 1859, D. Pedro II parou diante de São Brás. Descreveu a povoação, suas igrejas de São Brás e do Rosário e uma escola de meninos. A parada aparece expressamente em seu diário de viagem.",
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=21" }]
     },
     {
       name: "Traipu",
@@ -40,7 +48,9 @@
       lng: -37.001545,
       elevation: 8,
       verifiedPlaque: true,
-      description: "Ponto verificado da placa física do Caminho do Imperador em Traipu."
+      description: "Ponto verificado da placa física do Caminho do Imperador em Traipu.",
+      history: "D. Pedro II chegou a Traipu na noite de 16 de outubro de 1859 e ficou hospedado na casa da Câmara. Na manhã seguinte, visitou a matriz, as escolas e as lagoas onde se plantava arroz, além de desenhar uma vista do rio.",
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=21" }]
     },
     {
       name: "Belo Monte",
@@ -48,7 +58,12 @@
       lng: -37.2770,
       elevation: null,
       verifiedPlaque: false,
-      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado."
+      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado.",
+      history: "O território do atual município de Belo Monte integrava a paisagem percorrida pelo imperador em 1859. Seu diário registra a visita ao morro da capela de Nossa Senhora dos Prazeres, junto à Barra do Ipanema, e a passagem por Lagoa Funda. A sede atual ainda não era chamada Belo Monte.",
+      historySources: [
+        { label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=22" },
+        { label: "Histórico do IBGE", url: "https://www.ibge.gov.br/biblioteca/visualizacao/dtb/alagoas/belomonte.pdf" }
+      ]
     },
     {
       name: "Pão de Açúcar",
@@ -56,7 +71,9 @@
       lng: -37.435620,
       elevation: 11,
       verifiedPlaque: true,
-      description: "Ponto verificado da placa física do Caminho do Imperador em Pão de Açúcar."
+      description: "Ponto verificado da placa física do Caminho do Imperador em Pão de Açúcar.",
+      history: "D. Pedro II chegou a Pão de Açúcar em 17 de outubro de 1859 e recebeu simbolicamente a chave da vila. Hospedou-se na casa da Câmara e, antes de prosseguir para Piranhas, observou as ruas e a matriz. Voltou a passar pela vila no retorno da cachoeira.",
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=23" }]
     },
     {
       name: "Piranhas",
@@ -64,7 +81,9 @@
       lng: -37.7570,
       elevation: null,
       verifiedPlaque: false,
-      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado."
+      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado.",
+      history: "Em 18 de outubro de 1859, o vapor Pirajá levou D. Pedro II até Piranhas de Cima, no trecho pedregoso do São Francisco. Dali, a comitiva deixou a navegação e seguiu a cavalo em direção à Cachoeira de Paulo Afonso.",
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=24" }]
     },
     {
       name: "Olho d’Água do Casado",
@@ -72,7 +91,12 @@
       lng: -37.8301,
       elevation: null,
       verifiedPlaque: false,
-      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado."
+      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado.",
+      history: "O atual município de Olho d’Água do Casado ainda não existia como povoado na viagem de 1859. O diário cita uma fazenda chamada Olhos d’Água no percurso a cavalo, mas as fontes consultadas não permitem identificá-la com a sede atual. A formação do povoado local ocorreu depois, ligada à ferrovia.",
+      historySources: [
+        { label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=24" },
+        { label: "Histórico do IBGE", url: "https://www.ibge.gov.br/biblioteca/visualizacao/dtb/alagoas/olhodaguadocasado.pdf" }
+      ]
     },
     {
       name: "Delmiro Gouveia",
@@ -80,7 +104,12 @@
       lng: -37.9978,
       elevation: null,
       verifiedPlaque: false,
-      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado."
+      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado.",
+      history: "Em 1859, D. Pedro II atravessou o sertão rumo à Cachoeira de Paulo Afonso, na região que hoje inclui Delmiro Gouveia. A cidade ainda não existia com esse nome: o povoado de Pedra e sua ligação com o industrial Delmiro Gouveia surgiram décadas depois. O registro da visita imperial refere-se à cachoeira, não à sede atual.",
+      historySources: [
+        { label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=26" },
+        { label: "Assembleia Legislativa de AL", url: "https://www.al.al.leg.br/municipios/delmiro-gouveia" }
+      ]
     },
     {
       name: "Água Branca",
@@ -88,7 +117,9 @@
       lng: -37.9380,
       elevation: null,
       verifiedPlaque: false,
-      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado."
+      description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado.",
+      history: "Água Branca já era uma povoação quando D. Pedro II viajou pelo sertão, em 1859. Ele a menciona no diário ao descrever o sítio e as frutas de seu guia, o major Calaça, mas não relata uma visita à sede. O ponto integra hoje a rota de memória da viagem.",
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=24" }]
     }
   ];
 
@@ -96,6 +127,8 @@
     cityList: document.getElementById("cityList"),
     cityName: document.getElementById("cityName"),
     cityDescription: document.getElementById("cityDescription"),
+    cityHistory: document.getElementById("cityHistory"),
+    cityHistorySources: document.getElementById("cityHistorySources"),
     coordinates: document.getElementById("coordinates"),
     osmLink: document.getElementById("osmLink"),
     stageNumber: document.getElementById("stageNumber"),
@@ -123,6 +156,8 @@
     mobileSheetStage: document.getElementById("mobileSheetStage"),
     mobileSheetCity: document.getElementById("mobileSheetCity"),
     mobileSheetDescription: document.getElementById("mobileSheetDescription"),
+    mobileSheetHistory: document.getElementById("mobileSheetHistory"),
+    mobileSheetHistorySources: document.getElementById("mobileSheetHistorySources"),
     mobileSheetCoordinates: document.getElementById("mobileSheetCoordinates"),
     mobileSheetElevation: document.getElementById("mobileSheetElevation"),
     mobileSheetOsmLink: document.getElementById("mobileSheetOsmLink"),
@@ -315,6 +350,19 @@
     }
   }
 
+  function showHistorySources(container, sources) {
+    if (!container) return;
+    container.replaceChildren();
+    sources.forEach((source) => {
+      const link = document.createElement("a");
+      link.href = source.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = source.label + " ↗";
+      container.appendChild(link);
+    });
+  }
+
   function selectCity(index, pan = false) {
     activeIndex = Math.max(0, Math.min(cities.length - 1, index));
     const city = cities[activeIndex];
@@ -324,6 +372,8 @@
 
     if (el.cityName) el.cityName.textContent = city.name;
     if (el.cityDescription) el.cityDescription.textContent = city.description;
+    if (el.cityHistory) el.cityHistory.textContent = city.history;
+    showHistorySources(el.cityHistorySources, city.historySources);
     if (el.coordinates) {
       const elevation = city.elevation !== null ? ` • ${city.elevation} m` : "";
       el.coordinates.textContent = `${city.lat.toFixed(6)}, ${city.lng.toFixed(6)}${elevation}`;
@@ -340,6 +390,8 @@
     if (el.mobileSheetStage) el.mobileSheetStage.textContent = stage;
     if (el.mobileSheetCity) el.mobileSheetCity.textContent = city.name;
     if (el.mobileSheetDescription) el.mobileSheetDescription.textContent = city.description;
+    if (el.mobileSheetHistory) el.mobileSheetHistory.textContent = city.history;
+    showHistorySources(el.mobileSheetHistorySources, city.historySources);
     if (el.mobileSheetCoordinates) {
       el.mobileSheetCoordinates.textContent = `${city.lat.toFixed(6)}, ${city.lng.toFixed(6)}`;
     }

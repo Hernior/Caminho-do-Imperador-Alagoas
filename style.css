@@ -278,6 +278,34 @@ h1 {
   line-height: 1.65;
 }
 
+.city-history {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.city-history h3 {
+  margin: 0 0 8px;
+  color: var(--accent-strong);
+  font-size: .9rem;
+}
+
+.city-history p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.city-history-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: 10px;
+  font-size: .75rem;
+}
+
+.city-history-sources a { color: var(--accent-strong); }
+
 .coordinate-row {
   display: flex;
   flex-direction: column;
