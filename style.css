@@ -305,6 +305,7 @@ h1 {
 }
 
 .city-history-sources a { color: var(--accent-strong); }
+.city-history-sources span { color: var(--muted); }
 
 .coordinate-row {
   display: flex;

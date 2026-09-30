@@ -10,7 +10,9 @@
       verifiedPlaque: true,
       description: "Ponto verificado da placa física do Caminho do Imperador em Piaçabuçu.",
       history: "Em 14 de outubro de 1859, D. Pedro II desembarcou em Piaçabuçu ao entrar no rio São Francisco. Registrou a recepção com música de rabecas, observou as casas da então freguesia e a paisagem da foz antes de seguir rio acima.",
-      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=16" }]
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=16" }],
+      region: "Conheça a foz do rio São Francisco, onde o Velho Chico encontra o Atlântico. Piaçabuçu é a base para observar essa paisagem de dunas, rio e mar; a visita pode ser combinada com o trecho litorâneo da Praia do Peba.",
+      regionSources: [{ label: "ICMBio", url: "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/marinho/lista-de-ucs/apa-de-piacabucu/arquivos/apa_piacabucu.pdf" }]
     },
     {
       name: "Penedo",
@@ -20,7 +22,9 @@
       verifiedPlaque: true,
       description: "Ponto verificado da placa física do Caminho do Imperador em Penedo.",
       history: "D. Pedro II chegou a Penedo em 14 de outubro de 1859. Foi recebido no porto, participou de cerimônia no Convento de São Francisco e percorreu a cidade, registrando a Câmara, as igrejas e a navegação no rio.",
-      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=16" }]
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=16" }],
+      region: "Percorra o centro histórico à margem do São Francisco: o Paço Imperial, a Igreja das Correntes, os casarões e a orla permitem conhecer diferentes épocas da cidade. A Rocheira oferece outra vista desse conjunto urbano.",
+      regionSources: [{ label: "Prefeitura de Penedo", url: "https://penedo.al.gov.br/2024/07/05/pontos-turisticos-do-centro-historico-de-penedo-ganham-nova-iluminacao/" }]
     },
     {
       name: "Porto Real do Colégio",
@@ -30,7 +34,9 @@
       verifiedPlaque: true,
       description: "Ponto verificado da placa física do Caminho do Imperador em Porto Real do Colégio.",
       history: "Na subida do São Francisco, em 16 de outubro de 1859, o imperador visitou Porto Real do Colégio, diante de Propriá. Em seu diário, anotou a existência de uma antiga igreja e de um convento jesuíta que já haviam desaparecido.",
-      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=20" }]
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=20" }],
+      region: "Conheça a Igreja Matriz de Nossa Senhora da Conceição e a paisagem da margem alagoana do São Francisco, em frente a Propriá. A matriz preserva a referência ao antigo núcleo formado em torno da missão jesuíta.",
+      regionSources: [{ label: "Assembleia Legislativa de AL", url: "https://www.al.al.leg.br/municipios/porto-real-do-colegio" }]
     },
     {
       name: "São Brás",
@@ -40,7 +46,9 @@
       verifiedPlaque: false,
       description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado.",
       history: "Em 16 de outubro de 1859, D. Pedro II parou diante de São Brás. Descreveu a povoação, suas igrejas de São Brás e do Rosário e uma escola de meninos. A parada aparece expressamente em seu diário de viagem.",
-      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=21" }]
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=21" }],
+      region: "Em São Brás, observe a paisagem ribeirinha e conheça a tradição religiosa ligada ao padroeiro da cidade. A festa de São Brás, celebrada em fevereiro, é uma referência cultural local; fora desse período, vale percorrer o pequeno núcleo urbano.",
+      regionSources: [{ label: "Assembleia Legislativa de AL", url: "https://www.al.al.leg.br/municipios/sao-bras" }]
     },
     {
       name: "Traipu",
@@ -50,7 +58,9 @@
       verifiedPlaque: true,
       description: "Ponto verificado da placa física do Caminho do Imperador em Traipu.",
       history: "D. Pedro II chegou a Traipu na noite de 16 de outubro de 1859 e ficou hospedado na casa da Câmara. Na manhã seguinte, visitou a matriz, as escolas e as lagoas onde se plantava arroz, além de desenhar uma vista do rio.",
-      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=21" }]
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=21" }],
+      region: "Passeie pelas ruas de casario antigo e pela margem do São Francisco. A prainha e as croas, bancos de areia que surgem no rio, são os atrativos naturais destacados para Traipu.",
+      regionSources: [{ label: "Assembleia Legislativa de AL", url: "https://www.al.al.leg.br/municipios/traipu" }]
     },
     {
       name: "Belo Monte",
@@ -63,7 +73,9 @@
       historySources: [
         { label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=22" },
         { label: "Histórico do IBGE", url: "https://www.ibge.gov.br/biblioteca/visualizacao/dtb/alagoas/belomonte.pdf" }
-      ]
+      ],
+      region: "A praia fluvial do São Francisco e o pequeno terminal turístico são referências para conhecer a paisagem de Belo Monte. A Barra do Ipanema, onde os rios se encontram, ajuda a compreender a formação histórica da região.",
+      regionSources: [{ label: "Assembleia Legislativa de AL", url: "https://www.al.al.leg.br/municipios/belo-monte" }]
     },
     {
       name: "Pão de Açúcar",
@@ -73,7 +85,12 @@
       verifiedPlaque: true,
       description: "Ponto verificado da placa física do Caminho do Imperador em Pão de Açúcar.",
       history: "D. Pedro II chegou a Pão de Açúcar em 17 de outubro de 1859 e recebeu simbolicamente a chave da vila. Hospedou-se na casa da Câmara e, antes de prosseguir para Piranhas, observou as ruas e a matriz. Voltou a passar pela vila no retorno da cachoeira.",
-      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=23" }]
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=23" }],
+      region: "Conheça a prainha do São Francisco e a Ilha do Ferro, povoado conhecido pelo artesanato em madeira e pelos bordados. O passeio reúne paisagem ribeirinha, gastronomia e trabalho dos artesãos locais.",
+      regionSources: [
+        { label: "Assembleia Legislativa de AL", url: "https://www.al.al.leg.br/municipios/pao-de-acucar" },
+        { label: "Banco do Nordeste", url: "https://www.bnb.gov.br/s482-dspace/bitstream/123456789/816/1/2002_LIV_ADAN.pdf" }
+      ]
     },
     {
       name: "Piranhas",
@@ -83,7 +100,9 @@
       verifiedPlaque: false,
       description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado.",
       history: "Em 18 de outubro de 1859, o vapor Pirajá levou D. Pedro II até Piranhas de Cima, no trecho pedregoso do São Francisco. Dali, a comitiva deixou a navegação e seguiu a cavalo em direção à Cachoeira de Paulo Afonso.",
-      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=24" }]
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=24" }],
+      region: "Caminhe pelo centro histórico de Piranhas e pela orla do São Francisco. Do atracadouro parte a Rota do Cangaço, passeio fluvial que pode incluir uma trilha até a região da Grota do Angico.",
+      regionSources: [{ label: "Turismo de Piranhas", url: "https://turismo.piranhas.al.gov.br/rota-do-cangaco" }]
     },
     {
       name: "Olho d’Água do Casado",
@@ -96,6 +115,11 @@
       historySources: [
         { label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=24" },
         { label: "Histórico do IBGE", url: "https://www.ibge.gov.br/biblioteca/visualizacao/dtb/alagoas/olhodaguadocasado.pdf" }
+      ],
+      region: "Olho d’Água do Casado reúne paisagens dos cânions do São Francisco e sítios de arte rupestre no Assentamento Nova Esperança. Visitas aos sítios arqueológicos devem respeitar as orientações de conservação e o acesso organizado pela comunidade.",
+      regionSources: [
+        { label: "Prefeitura de Olho d’Água do Casado", url: "https://olhodaguadocasado.al.gov.br/home/olho-dagua-do-casado-passa-a-integrar-o-mapa-do-turismo-brasileiro/" },
+        { label: "Iphan", url: "https://www.gov.br/iphan/pt-br/assuntos/noticias/assentamento-nova-esperanca-al-alia-conservacao-do-patrimonio-arqueologico-ao-desenvolvimento-territorial/" }
       ]
     },
     {
@@ -109,6 +133,11 @@
       historySources: [
         { label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=26" },
         { label: "Assembleia Legislativa de AL", url: "https://www.al.al.leg.br/municipios/delmiro-gouveia" }
+      ],
+      region: "Conheça o Museu Delmiro Gouveia para entender a história industrial da antiga Pedra. A região também oferece a paisagem dos cânions do São Francisco e o legado da Usina de Angiquinho.",
+      regionSources: [
+        { label: "Assembleia Legislativa de AL", url: "https://www.al.al.leg.br/municipios/delmiro-gouveia" },
+        { label: "Prefeitura de Delmiro Gouveia", url: "https://delmirogouveia.al.gov.br/em-reuniao-com-diretoria-da-chesf-a-prefeita-ziane-costa-alinha-o-inicio-do-processo-de-uso-do-complexo-de-angiquinho-para-o-turismo-local/" }
       ]
     },
     {
@@ -119,7 +148,9 @@
       verifiedPlaque: false,
       description: "Município da rota. Coordenada atual representa a sede municipal; ponto exato da placa ainda não confirmado.",
       history: "Água Branca já era uma povoação quando D. Pedro II viajou pelo sertão, em 1859. Ele a menciona no diário ao descrever o sítio e as frutas de seu guia, o major Calaça, mas não relata uma visita à sede. O ponto integra hoje a rota de memória da viagem.",
-      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=24" }]
+      historySources: [{ label: "Diário de D. Pedro II", url: "https://museuimperial.museus.gov.br/wp-content/uploads/2020/09/VOL02.pdf#page=24" }],
+      region: "Explore o centro histórico serrano: a Igreja Matriz, a Igrejinha do Rosário, a Casa do Barão e as praças preservam a arquitetura antiga. A Serra do Himalaia completa o passeio com a paisagem natural de Água Branca.",
+      regionSources: [{ label: "Assembleia Legislativa de AL", url: "https://www.al.al.leg.br/municipios/agua-branca" }]
     }
   ];
 
@@ -129,6 +160,8 @@
     cityDescription: document.getElementById("cityDescription"),
     cityHistory: document.getElementById("cityHistory"),
     cityHistorySources: document.getElementById("cityHistorySources"),
+    cityRegion: document.getElementById("cityRegion"),
+    cityRegionSources: document.getElementById("cityRegionSources"),
     coordinates: document.getElementById("coordinates"),
     osmLink: document.getElementById("osmLink"),
     stageNumber: document.getElementById("stageNumber"),
@@ -158,6 +191,8 @@
     mobileSheetDescription: document.getElementById("mobileSheetDescription"),
     mobileSheetHistory: document.getElementById("mobileSheetHistory"),
     mobileSheetHistorySources: document.getElementById("mobileSheetHistorySources"),
+    mobileSheetRegion: document.getElementById("mobileSheetRegion"),
+    mobileSheetRegionSources: document.getElementById("mobileSheetRegionSources"),
     mobileSheetCoordinates: document.getElementById("mobileSheetCoordinates"),
     mobileSheetElevation: document.getElementById("mobileSheetElevation"),
     mobileSheetOsmLink: document.getElementById("mobileSheetOsmLink"),
@@ -350,9 +385,12 @@
     }
   }
 
-  function showHistorySources(container, sources) {
+  function showSourceLinks(container, sources) {
     if (!container) return;
     container.replaceChildren();
+    const label = document.createElement("span");
+    label.textContent = sources.length === 1 ? "Fonte:" : "Fontes:";
+    container.appendChild(label);
     sources.forEach((source) => {
       const link = document.createElement("a");
       link.href = source.url;
@@ -373,7 +411,9 @@
     if (el.cityName) el.cityName.textContent = city.name;
     if (el.cityDescription) el.cityDescription.textContent = city.description;
     if (el.cityHistory) el.cityHistory.textContent = city.history;
-    showHistorySources(el.cityHistorySources, city.historySources);
+    showSourceLinks(el.cityHistorySources, city.historySources);
+    if (el.cityRegion) el.cityRegion.textContent = city.region;
+    showSourceLinks(el.cityRegionSources, city.regionSources);
     if (el.coordinates) {
       const elevation = city.elevation !== null ? ` • ${city.elevation} m` : "";
       el.coordinates.textContent = `${city.lat.toFixed(6)}, ${city.lng.toFixed(6)}${elevation}`;
@@ -391,7 +431,9 @@
     if (el.mobileSheetCity) el.mobileSheetCity.textContent = city.name;
     if (el.mobileSheetDescription) el.mobileSheetDescription.textContent = city.description;
     if (el.mobileSheetHistory) el.mobileSheetHistory.textContent = city.history;
-    showHistorySources(el.mobileSheetHistorySources, city.historySources);
+    showSourceLinks(el.mobileSheetHistorySources, city.historySources);
+    if (el.mobileSheetRegion) el.mobileSheetRegion.textContent = city.region;
+    showSourceLinks(el.mobileSheetRegionSources, city.regionSources);
     if (el.mobileSheetCoordinates) {
       el.mobileSheetCoordinates.textContent = `${city.lat.toFixed(6)}, ${city.lng.toFixed(6)}`;
     }
