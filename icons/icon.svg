@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Caminhos de Alagoas">
+  <rect width="512" height="512" rx="112" fill="#151914"/>
+  <path d="M120 385 C155 335 170 267 237 284 S335 340 392 126" fill="none" stroke="#f1c767" stroke-width="34" stroke-linecap="round"/>
+  <circle cx="120" cy="385" r="26" fill="#f3efe2"/>
+  <circle cx="392" cy="126" r="26" fill="#f3efe2"/>
+</svg>

@@ -5,16 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#151914">
   <meta name="description" content="Mapa interativo da Trilha do Imperador em Alagoas, de Piaçabuçu a Água Branca.">
-  <title>Trilha do Imperador — Alagoas</title>
+  <title>Caminhos de Alagoas — Trilha do Imperador</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
 
-  <link rel="preconnect" href="https://unpkg.com">
-  <link rel="preconnect" href="https://tile.openstreetmap.org">
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  >
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -37,7 +33,7 @@
         <span></span><span></span><span></span>
       </button>
       <div class="mobile-brand">
-        <strong>Trilha do Imperador</strong>
+        <strong>Caminhos de Alagoas</strong>
         <span id="mobileActiveCity">Piaçabuçu</span>
       </div>
       <button id="mobileFitRoute" class="mobile-icon-button map-fit-icon" type="button" aria-label="Ver rota completa">⌖</button>
@@ -139,6 +135,7 @@
             <option value="bike-misto" disabled>Bike · Misto (carregando)</option>
           </select>
         </section>
+        <p id="offlineStatus" class="offline-status" role="status">Preparando mapa offline…</p>
         <section class="active-card" aria-live="polite">
           <div class="active-card-content">
           <p class="step-label">ETAPA <span id="stageNumber">01</span></p>
@@ -199,16 +196,32 @@
 
     <footer>
       <p>
-        Trilha do Imperador • Alagoas. Mapa base © OpenStreetMap contributors.
+        Caminhos de Alagoas • Trilha do Imperador. Mapa base © OpenStreetMap contributors.
       </p>
     </footer>
   </div>
 
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin="">
-  </script>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/protomaps/protomaps-leaflet.js"></script>
   <script src="app.js"></script>
+  <script>
+    const offlineStatus = document.getElementById("offlineStatus");
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+          .then(() => navigator.serviceWorker.ready)
+          .then(() => caches.match(new URL("./alagoas.pmtiles", document.baseURI).href))
+          .then((mapCopy) => {
+            offlineStatus.textContent = mapCopy ? "Mapa offline pronto" : "Mapa offline indisponível";
+          })
+          .catch((error) => {
+            offlineStatus.textContent = "Mapa offline indisponível";
+            console.error("Não foi possível preparar o app offline:", error);
+          });
+      });
+    } else {
+      offlineStatus.textContent = "Uso offline indisponível neste navegador";
+    }
+  </script>
 </body>
 </html>

@@ -304,10 +304,10 @@
     mobileNextCity: document.getElementById("mobileNextCity")
   };
 
-  if (typeof L === "undefined") {
+  if (typeof L === "undefined" || typeof protomapsL === "undefined") {
     document.body.insertAdjacentHTML(
       "afterbegin",
-      '<div style="position:fixed;z-index:99999;inset:12px auto auto 12px;background:#7f1d1d;color:white;padding:12px 16px;border-radius:10px;font:14px system-ui">Não foi possível carregar o mapa. Verifique a conexão com a internet.</div>'
+      '<div style="position:fixed;z-index:99999;inset:12px auto auto 12px;background:#7f1d1d;color:white;padding:12px 16px;border-radius:10px;font:14px system-ui">Não foi possível carregar o mapa.</div>'
     );
     return;
   }
@@ -317,9 +317,11 @@
     scrollWheelZoom: true
   });
 
-  const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution: "&copy; OpenStreetMap contributors"
+  const tiles = protomapsL.leafletLayer({
+    url: "alagoas.pmtiles",
+    flavor: "dark",
+    lang: "pt",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });
 
   tiles.on("loading", () => console.info("[tiles] loading"));

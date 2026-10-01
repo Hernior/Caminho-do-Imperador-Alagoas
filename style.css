@@ -128,7 +128,7 @@ h1 {
   width: 100%;
   height: min(72vh, 840px);
   min-height: 560px;
-  background: #d7dccf;
+  background: #242a22;
 }
 
 .map-actions {
@@ -237,6 +237,12 @@ h1 {
 .route-stats span { font-size: .65rem; line-height: 1.25; }
 
 .route-choice { margin-bottom: 18px; }
+
+.offline-status {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: .78rem;
+}
 .route-choice label {
   display: block;
   margin-bottom: 7px;
